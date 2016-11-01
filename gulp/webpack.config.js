@@ -34,11 +34,11 @@ var getLoaders = function(){
 
 var getPlugin = function(){
     var defaultPlugin = [
-        new webpack.ProvidePlugin({
-            "$": "jquery.js",
-            "jquery": "jquery.js",
-            "jQuery": "jquery.js"
-        }),
+        // new webpack.ProvidePlugin({
+        //     "$": "jquery.js",
+        //     "jquery": "jquery.js",
+        //     "jQuery": "jquery.js"
+        // }),
         new webpack.optimize.CommonsChunkPlugin({
             name: "common",
             filename: "/js/common.js",
@@ -79,7 +79,7 @@ module.exports = function() {
         profile:true,
         output: {
             path: Setting.statics,
-            filename:"/js/[name].js"
+            filename:"js/[name].js"   /// 不能'/'打头，分隔符写到path中
         },
         // devtool: 'eval',
         module: {
