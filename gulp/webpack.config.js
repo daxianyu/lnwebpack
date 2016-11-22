@@ -22,13 +22,27 @@ function getEntry(globpath) {
     return entries
 }
 
+
 var getLoaders = function(){
     return [{
+        test: /\.ts$/,
+        // loader: ExtractTextPlugin.extract("ts")
+        // loader: ExtractTextPlugin.extract("awesome-typescript-loader")
+        loaders: ['awesome-typescript-loader']
+    },{
         test:/\.css$/,
         loader: ExtractTextPlugin.extract("style", "css")
     },{
         test:/\.scss$/,
         loader: ExtractTextPlugin.extract("style", "css!sass")
+    },{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ["babel?presets[]=es2015"],
+        // query: {
+        //     presets: ['es2015']
+        // },
+        // loader: ExtractTextPlugin.extract("babel?presets[]=es2015")
     }]
 };
 
@@ -84,6 +98,9 @@ module.exports = function() {
         // devtool: 'eval',
         module: {
             loaders: getLoaders()
+        },
+        resolve: {
+            extensions: ['', '.ts', '.js']
         },
         plugins: getPlugin(),
         postcss: getPostCss()

@@ -3,11 +3,10 @@ var webpack = require("webpack");
 var Setting = require("./directory");
 
 var getAlias = function(){
-    return '';
-    // return {
-    //     "jquery": path.resolve(Setting.nodeModules, "jquery/dist/jquery.min.js"),
-    //     "angular": path.resolve(Setting.nodeModules, "angular/angular.min.js")
-    // }
+    return {
+        "jquery": path.resolve(Setting.nodeModules, "jquery/dist/jquery.min.js"),
+        // "angular": path.resolve(Setting.nodeModules, "angular/angular.min.js")
+    }
 };
 
 module.exports = {
