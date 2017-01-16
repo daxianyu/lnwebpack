@@ -3,7 +3,6 @@
   "content": {
     "./node_modules/jquery/dist/jquery.min.js": 1,
     "./node_modules/webpack/buildin/amd-options.js": 2,
-    "./node_modules/angular/index.js": 3,
-    "./node_modules/angular/angular.js": 4
+    "./node_modules/angular/angular.min.js": 3
   }
 }
