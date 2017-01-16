@@ -1,11 +1,11 @@
-/* globals require, rm, cp */
+/* globals require, rm, cp, mkdir, JSON */
 require('shelljs/global'); // 引入shell命令
 
 const gulp = require('gulp'),
+    fs = require('fs'),
     webpack = require('webpack'),
     merge = require('webpack-merge'),
-    glob = require('glob'),
-    path = require('path'),
+    gulpRev = require('gulp-rev'),
     webpackStream = require('webpack-stream'),
     webpackDllConfig = require('./gulp/webpack.dll.js'),
     Setting = require('./gulp/directory'),
@@ -17,8 +17,8 @@ const gulp = require('gulp'),
         jquery: Setting.nodeModules + '/jquery/dist/jquery.min.js',
         angular: Setting.nodeModules + '/angular/angular.min.js',
     },
-    externals = {},
-    names = {
+    names = {},
+    externals = {
         jquery: 'window.jquery',
         angular: 'window.angular',
     };
@@ -52,23 +52,39 @@ gulp.task('webpack', function (done) {                   // 使用原生 webpack
     });
 });
 
-gulp.task('ws', function () {
-    let fileReg = /\/([^\/]+)$/;
+gulp.task('copyModules', function (done) {
+    rm('-rf', Setting.dest + '/*');
     mkdir('dist/modules');
     mkdir('dist/statics');
-    if (Object.keys(raw).length) {
-        for (let item in raw) {
-            cp(raw[item], Setting.statics);
-            externals[item] = '/statics' + raw[item].match(fileReg)[0];
+    let keyArr = Object.keys(raw),
+        valueArr = [];
+    keyArr.forEach(function (key) {
+        valueArr.push(raw[key]);
+    });
+    done();
+    return gulp.src(valueArr)
+        .pipe(gulpRev())
+        .pipe(gulp.dest(Setting.statics))
+        .pipe(gulpRev.manifest('rev.json'))
+        .pipe(gulp.dest(Setting.root));
+});
+
+gulp.task('ws', function (done) {
+    let fileReg = /\/([^\/]+)$/,
+        revMani = JSON.parse(fs.readFileSync(Setting.root + '/rev.json'));
+    for (let item in raw) {
+        if (raw[item]) {
+            names[item] = '/statics/' + revMani[raw[item].match(fileReg)[1]];
         }
     }
-    return gulp.src('./src/pages/page1/index.js')
+    done();
+    return gulp.src('./src/pages/**/index.js')
         .pipe(webpackStream(merge(webpackConfig, {
             watch: true,
-            externals: names,
-            htmlTag: externals,
+            externals: externals,
+            htmlTag: names,
         })))
-        .pipe(gulp.dest(Setting.dest));
+        .pipe(gulp.dest(Setting.dest));                      // 最后的输出目录就在这里，其他一切以此为基
     // return webpackStream(webpackConfig);                 // 使用webpack stream进行打包,但是貌似没什么效果
 });
 
@@ -91,5 +107,5 @@ gulp.task('webpack-dev-server', function () {        // 开发加服务器加监
 });
 
 gulp.task('b', gulp.series('webpack', 'server'));
-gulp.task('bs', gulp.series('server', 'ws'));
+gulp.task('bs', gulp.series('copyModules', 'server', 'ws'));
 gulp.task('default', gulp.series('webpack'));

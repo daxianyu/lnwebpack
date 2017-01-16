@@ -54,13 +54,13 @@ function getPlugin () {
             // }),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common',
-                filename: 'statics/js/common.js',
+                filename: 'statics/js/common_[hash:6].js',
                 minChunks: 2,
             }),
             new ScriptExtHtmlWebpackPlugin({
                 defaultAttribute: 'defer',
             }),
-            new ExtractTextPlugin('statics/css/out.[name].css'),
+            new ExtractTextPlugin('statics/css/[name]_[hash:6].css'),
             // new webpack.DllReferencePlugin({
             //     context: Setting.root,
             //     manifest: require(Setting.root + '/manifest.json'),
@@ -71,7 +71,7 @@ function getPlugin () {
     _.each(pages, function (value, key, object) {
         let conf = {
             template: path.resolve(Setting.root, value),
-            filename: path.resolve('modules/', key) + '.html',
+            filename: `modules/${key}.html`,
             inject: 'body',
             chunks: [key, 'common'],
             excludeChunks: [],
@@ -91,11 +91,12 @@ module.exports = {
     watch: true,
     cache: true,
     profile: true,
-    // output: {
-    //     path: Setting.statics,
-    //     filename: 'js/[name].js',   // 不能'/'打头，分隔符写到path中
-    // },
-    // devtool: 'eval',
+    output: {
+        path: Setting.dest,
+        publicPath: '/',                                // 即以path为基
+        filename: 'statics/js/[name]_[hash:6].js',      // 不能'/'打头，分隔符写到path中
+    },
+    devtool: 'eval',
     module: {
         preLoaders: [
             {
@@ -109,15 +110,11 @@ module.exports = {
     },
     eslint: {
         configFile: Setting.root + '/.eslintrc.js', // 指定eslint的配置文件
-        failOnWarning: false, // 报warning终止webpack
-        failOnError: true, // 报error终止
-        cache: true, // 开启eslint的cache，cache存在node_modules/.cache目录里
+        failOnWarning: false,                       // 报warning终止webpack
+        failOnError: true,                          // 报error终止
+        cache: true,                                // 开启eslint的cache，cache存在node_modules/.cache目录里
     },
     resolve: {
-        alias: {
-            'jquery': path.resolve(Setting.nodeModules, 'jquery/dist/jquery.min.js'),
-            'angular': path.resolve(Setting.nodeModules, 'angular/angular.min.js'),
-        },
         extensions: ['', '.ts', '.js'],
     },
     plugins: getPlugin(),
