@@ -12,13 +12,13 @@ const gulp = require('gulp'),
     gutil = require('gutil'),
     webpackConfig = require('./gulp/webpack.config'),
     raw = {
-        // jquery: Setting.nodeModules + '/jquery/dist/jquery.min.js',
+        jquery: Setting.nodeModules + '/jquery/dist/jquery.min.js',
         // angular: Setting.nodeModules + '/angular/angular.min.js',
         avalon2: Setting.nodeModules + '/avalon2/dist/avalon.js',
     },
     names = {},
     externals = {
-        // jquery: 'window.jquery',
+        jquery: 'window.jquery',
         // angular: 'window.angular',
         avalon2: 'window.avalon',
     };

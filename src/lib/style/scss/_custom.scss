@@ -1,24 +1,65 @@
+$page-min-width: 1024px;
+$font-color: #333;
+
+$head-tip-font-size: 12px;
+$main-spacing: 20px;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+
+$main-color: #1caf9a;
+$main-color2: #21CCB2;
+
+$clr1: #333;
+$clr2: #666;
+$clr3: #828282;
+$clr4: #999;
+$clr5: #bbb;
+$clr6: #ddd;
+$clr7: #EEE;
+$clr8: #F2F2F2;
+$clr9: #F3F3F3;
+$clr10: #F7F7F7;
+$clr11: #FAFAFA;
+$clr12: white;
+$clr13: #3689C3;
+$clr14: #FF6B6B;
+$clr15: #29282E;
+$clr16: #32323A;
+$clr17: #1D2939;
+$clr18: #F4F8FB;
+$clr19: #E8E8E8;
+
+$fc1: $clr1;
+$fc2: $clr2;
+$fc3: $clr4;
+
+$inter-lg-bg-clr: $clr19;
+$inter-sm-bg-clr: $clr8;
+
+$btn-border-clr: $clr6;
+$border-clr: $clr9;
+
+$bg-clr: $clr9;
+$table-border-clr: $clr6;
+$table-head-clr: $clr8;
+$table-band-clr: $clr18;
+$table-hover-clr: $clr10;
+
+$tab-head-active-clr: $clr10;
+
+$error-color: $clr14;
+$link-color: $clr13;
+
 $btn-radius: 4px;
-//
-
-//$colors:(
-//        "content": white,
-//        "shadow": #f3f3f3,
-//        "dark": #999
-//);
-//
-//
-//$bg-color: rgb(243,243,243);
-//
-//
-//$block-color: white;
-
-
-
-$text-color1 :#53d192;
-$text-color2 :#FF834D;
-$text-color3 :#6BD3F3;
-$text-color4 :#9D78CD;
+$text-color1: #53d192;
+$text-color2: #FF834D;
+$text-color3: #6BD3F3;
+$text-color4: #9D78CD;
+$text-color5: #868BB7;
 
 $label-color: $text-color1,$text-color2,$text-color3,$text-color4;
 
@@ -40,3 +81,9 @@ $side-menu-active-color: #29282e;
 
 ///
 $content-head-height: 50px;
+
+$btn-list2 : (
+        "main":(
+                "test": (white, $fc1, true, $border-clr, red)
+        )
+) !default;
