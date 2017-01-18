@@ -1,0 +1,106 @@
+@import "color";
+@import "Zindex";
+@import "page";
+
+
+//global
+$page-min-width: 1024px !default;
+$main-spacing: 15px !default;
+$border-box-sizing: true;
+$main-padding: 15px 15px 15px 15px !default;
+$main-margin: 15px 15px 15px 15px !default;
+$main-line-height: 1.42856 !default;
+
+$font-size: 14px !default;
+
+$border-shadow: rgba(51, 51, 51, 0.1) !default;
+
+$main-border: 1px $main-border-color solid !default;
+
+
+//arrow
+$arrow-width: 8px !default;
+$arrow-height: 5px !default;
+$arrow-color: #9D78CD !default;
+
+
+
+
+///btn
+$btn-radius:5px !default;
+
+$btn-padding: 5px 10px !default;
+$btn-color: white !default;
+$btn-width:null !default;
+$btn-height: null !default;
+$btn-fSize: 12px !default;
+
+$btn-height: 34px !default;
+$btn-width: 91px !default;
+$btn-padding: null !default;
+$btn-bordered: true !default;
+
+$btn-narrow: 68px !default;
+$btn-mid: 91px !default;
+$btn-wide: 130px !default;
+
+
+
+$btn-list : (
+        "main":(
+                "primary": ($red, $btn-color,  false, false),
+                "orange": ($orange, $btn-color, darken($orange, 10%), false),
+                "yellow": ($yellow, $btn-color, darken($yellow, 10%), false),
+                "green": ($green, $btn-color, darken($green, 10%), false),
+                "blueGreen": ($blueGreen, $btn-color, darken($blueGreen, 10%), false),
+                "blue": ($blue, $btn-color, darken($blue, 10%), false),
+                "purple": ($purple, $btn-color, false, false),
+                "white": ($white, #333, darken($white, 10%), false),
+                "test": ($white, $fc1, darken($white, 10%), $main-color)
+        )
+) !default;
+
+
+//input
+$input-fSize: 14px !default;
+$input-color: #333 !default;
+
+
+//label-input
+$form-border-color: #f3f3f3 !default;
+$form-inline-border: 1px $form-border-color solid !default;
+$form-inline-border-radius: null !default;
+$form-input-height: 40px !default;
+$form-input-padding: 10px 0 10px 16px !default;
+$form-label-width: 76px !default;
+$form-label-right-padding: 5px !default;
+
+
+
+//layout
+$container-margin: 0 0 15px 0 !default;
+
+$page-side-width: 230px !default;
+$page-side-bg-color: #32323a !default;
+$column-spacing: 2 * 15px !default;
+
+
+//modals
+$mask-color: rgba(66,66,66,0.6) !default;
+$modal-sm-width: 420px !default;
+$modal-md-width: 560px !default;
+$modal-lg-width: 700px !default;
+
+
+
+//project default
+
+//project default if any
+
+
+//
+//$btn-radius: 3px !default;
+//$btn-color: white;
+//$btn-bg-color-top:#4294f0;
+//$btn-bg-color-bottom:#0776f3;
+//$btn-bg-color: #4294f0;

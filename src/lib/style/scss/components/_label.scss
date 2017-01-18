@@ -1,0 +1,97 @@
+$label-md-height: 70px;
+$label-lg-height: 120px;
+$label-lg-head-height: 40px;
+$label-lg-head-fSize: 14px;
+$label-lg-head-padding: 12px 20px;
+$label-lg-head-line-height: $label-lg-head-height - 12px*2;
+
+$label-lg-body-height: $label-lg-height - $label-lg-head-height;
+$label-md-padding: 0px 10px 0px 20px;
+$label-lg-padding: 0px 10px 0 20px;
+$label-name-size: 20px;
+$label-icon-size: 42px;
+$label-md-content-size: 32px;
+$label-lg-content-size: 40px;
+
+.float-label{
+  float: left;
+  padding-left: 0.5*$main-spacing;
+  padding-right: 0.5*$main-spacing;
+  &:first-child{
+    padding-left: $main-spacing;
+  }
+  &:last-child{
+    padding-right: $main-spacing;
+  }
+}
+
+.label-md{
+  padding:$label-md-padding;
+  //display: inline-block;
+  @include label-shadow;
+  @include clearfix;
+  .label-name{
+    line-height: $label-md-height;
+    font-size: $label-name-size;
+    border-right: $main-border;
+    padding-right: 10px;
+  }
+  .label-content{
+    line-height: $label-md-height;
+    font-size: $label-md-content-size;
+    float: right;
+    height: 70px;
+    padding-left: $main-spacing;
+    small{
+      font-size: $font-size;
+      padding-left: 5px;
+    }
+  }
+}
+
+.label-lg{
+  //display: inline-block;
+  @include label-shadow;
+  @include clearfix;
+  .label-head{
+    padding: $label-lg-head-padding;
+    font-size: $label-lg-head-fSize;
+    line-height: $label-lg-head-line-height;
+    border-bottom: $main-border;
+  }
+  .label-body{
+    padding:$label-lg-padding;
+    .label-icon{
+      font-size: $label-icon-size;
+      line-height: $label-lg-body-height;
+    }
+    .label-content{
+      font-size: $label-lg-content-size;
+      line-height: $label-lg-body-height;
+      height: $label-lg-body-height;
+      float: right;
+      small{
+        font-size: 18px;
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+
+@each $i in $label-color{
+  $index: index($label-color, $i);
+  .label-color-#{$index}{
+    color: $i;
+  }
+}
+
+.label{
+  padding: 2px 5px;
+  font-size: 12px;
+  color: #fff;
+  background: #868bb7;
+  display: inline-block;
+  line-height: $main-line-height;
+}
+

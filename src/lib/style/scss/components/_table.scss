@@ -1,0 +1,47 @@
+.table{
+  font-size: $table-fSize;
+  margin:0;
+  table-layout: auto;
+  th{
+    padding:15px 0;
+    border-bottom: none;
+    @include ellipsis(100%, table-cell)
+  }
+  td{
+    padding:10px 0;
+    border-bottom: none;
+    @include ellipsis(100%, table-cell)
+  }
+}
+
+.table-bordered{
+  border: $table-border;
+  th{
+    border: $table-border;
+  }
+  td{
+    border: $table-border;
+  }
+}
+
+.table-hover{
+  tr:hover:nth-of-type(n+2){
+    background-color: $table-hover-color;
+  }
+}
+
+.table-condensed{
+  th{
+    padding: 10px 0;
+  }
+  td{
+    padding: 6px 0;
+  }
+}
+
+.table-branded{
+  border: $table-border;
+  tr:nth-child(even){
+    background-color: $table-hover-color;
+  }
+}

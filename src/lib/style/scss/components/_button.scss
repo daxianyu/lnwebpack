@@ -1,0 +1,195 @@
+@mixin btn-hover($color){
+  background-color: darken($color, 10%);
+}
+
+@mixin btn-active($color){
+  background-color: darken($color, 20%);
+}
+
+@mixin btn-border($color){
+  border: $color 1px solid;
+}
+
+.btn{
+  @include ellipsis();
+  border-radius: $btn-radius;
+  min-width: $btn-mid;
+  user-select: none;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: $font-size-xs;
+  line-height:1.42856;
+  padding: 8px 20px;
+  background: white linear-gradient(hsla(0,0%,100%,0.2),hsla(0,0%,100%,0.2));;
+  &:hover{
+
+  }
+  &:active{
+
+  }
+  &.disabled{
+    pointer-events: none;
+  }
+}
+
+
+@each $name, $value in map_get($btn-list, "main"){
+  .btn-#{$name}{
+    background-color: nth($value, 1);
+    color: nth($value, 2);
+    &.disabled{
+      background-color: lighten(nth($value, 1),10%);
+      color: darken(nth($value, 2), 10%);
+    }
+    @if(nth($value, 3)){
+      border:nth($value, 3) 1px solid;
+      //border:darken(nth($value, 1), 10) 1px solid;
+    }@else{
+      border:nth($value,1) 1px solid;
+    }
+    @include hover{
+      @if(nth($value, 4)){
+        @include btn-hover(nth($value, 4));
+      }@else {
+        @include btn-hover(nth($value, 1));
+      }
+    }
+    @include active{
+      @include btn-active(nth($value, 1));
+    }
+  }
+}
+
+@each $name, $value in map_get($btn-list2, "main"){
+  $main-color: nth($value, 1);
+  $font-color: nth($value, 2);
+  $isBordered: nth($value, 3);
+  $border-color: nth($value, 4);
+  $hover-border-color: nth($value, 5);
+  @if($isBordered){
+    $border-color: nth($value, 4);
+    $hover-border-color: nth($value, 5);
+  }
+  .btn-#{$name}{
+    background-color: nth($value, 1);
+    color: $font-color;
+    font-weight: normal;
+    @if($isBordered){
+      border: $border-color 1px solid;
+      @include hover{
+        @if($hover-border-color){
+          @include btn-border($hover-border-color)
+        }@else{
+          @include btn-border($border-color)
+        }
+      }
+      @include active{
+        @if($hover-border-color){
+          @include btn-border($hover-border-color)
+        }@else{
+          @include btn-border($border-color)
+        }
+      }
+    }
+  }
+}
+
+.btn-xs{
+  min-width: $btn-narrow;
+  padding: 3px 9px;
+  line-height: 1;
+}
+
+.btn-sm{
+  min-width: $btn-narrow;
+  padding: 6px 9px;
+}
+
+.btn-lg{
+  min-width: $btn-wide;
+  padding: 14px 21px;
+}
+
+
+.btn-group{
+  >* {
+    float: left;
+    border-radius: 0!important;
+    border: none;
+  }
+  border: $border-clr 1px solid;
+  border-radius: $btn-radius;
+  display: inline-block;
+  overflow: hidden;
+  @include clearfix;
+}
+
+.pre-btn-group{
+  >* {
+    float: left;
+    border-radius: 0!important;
+    border: none;
+    min-width: initial;
+    &:nth-child(1){
+      border-right: $btn-border-clr 1px solid;
+    }
+  }
+  border: $btn-border-clr 1px solid;
+  border-radius: $btn-radius;
+  display: inline-block;
+  overflow: hidden;
+  @include clearfix;
+}
+
+.plus-btn-group{
+  font-size:$font-size-xs;
+  border: $btn-border-clr 1px solid;
+  border-radius: 4px;
+  .pre-plus{
+    padding: 11px;
+    border-right: $btn-border-clr 1px solid;
+    float: left;
+  }
+
+  .btn-plus{
+    padding: 11px;
+    float: left;
+    line-height: 1;
+  }
+
+  @include hover{
+    @include btn-hover(white)
+  }
+  @include active{
+    @include btn-active(white)
+  }
+  @include clearfix;
+}
+
+
+//.btn-qp{ //quasiphysical
+//  $bg-color: $btn-bg-color;
+//  $bg-color-t:$btn-bg-color-top;
+//  $bg-color-b:$btn-bg-color-bottom;
+//  text-shadow: 0 1px 0 darken($btn-bg-color-bottom, 10%);
+//  @include linear-gradient-bg($bg-color-t, $bg-color-b);
+//  @include hover{
+//    @include linear-gradient-bg(darken($bg-color-t, 10%), darken($bg-color-b, 10%))
+//  }
+//  @include active{
+//    box-shadow: inset 0 0 8px 4px darken($bg-color,15%), inset 0 0 8px 4px darken($bg-color,15%);
+//  }
+//}
+
+//.btn-fd{ //flat design
+//  $bg-color: $btn-bg-color;
+//  color: $btn-color;
+//  background-color: $bg-color;
+//  @include hover{
+//    @include btn-hover($bg-color);
+//  }
+//  @include active{
+//    @include btn-active($bg-color);
+//  }
+//}

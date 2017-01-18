@@ -1,0 +1,8 @@
+//z-index manage
+$z-layers: (
+        "modal": (
+                "mask":         98,
+                "content":       99
+        ),
+        "sidebar": 200
+);

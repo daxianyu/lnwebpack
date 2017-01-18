@@ -1,0 +1,52 @@
+%column{
+  float: left;
+  padding-left: 0.5 * $column-spacing;
+  padding-right: 0.5 * $column-spacing;
+}
+
+@mixin columns($i){
+  width: $i/ $column-num * 100%;
+}
+
+@for $i from 1 through 12{
+  $column-num: 12 !global;
+  .col-#{$i}{
+    @include columns($i);
+    @extend %column;
+  }
+}
+
+@for $i from 1 through 24{
+  $column-num: 24 !global;
+  .col24-#{$i}{
+    @include columns($i);
+    @extend %column;
+  }
+}
+
+@for $i from 1 through 12{
+  .tb-cell-#{$i}{
+    @include columns($i);
+  }
+}
+
+
+.crow, .brow{
+  @include clearfix;
+  [class^='col']{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.row{
+  margin-left: - 0.5 * $column-spacing;
+  margin-right: - 0.5 * $column-spacing;
+  margin-bottom: 0.5 * $column-spacing;
+  @include clearfix;
+}
+
+.brow{
+  margin-bottom: 0.5 * $column-spacing;
+}
+

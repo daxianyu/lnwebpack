@@ -1,0 +1,8 @@
+
+.show-arw{
+  position: absolute;
+  border-bottom: $arrow-height solid $arrow-color;
+  border-left: $arrow-width/2  solid transparent;
+  border-right: $arrow-width/2 solid transparent;
+  bottom:0;
+}

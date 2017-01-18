@@ -1,0 +1,37 @@
+.modal{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right:0;
+  z-index: z("modal", "content");
+  overflow-y: auto;
+  overflow-x: hidden;
+  .modal-container{
+    min-height: 320px;
+    margin:130px auto;
+  }
+  .modal-lg{
+    width: $modal-lg-width;
+  }
+  .modal-md{
+    width: $modal-md-width;
+  }
+  .modal-sm{
+    width: $modal-sm-width;
+  }
+}
+
+.modal-mask{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right:0;
+  z-index: z("modal", "mask");
+  background-color: $mask-color;
+}
+
+.modal-open{
+  overflow: hidden;
+}

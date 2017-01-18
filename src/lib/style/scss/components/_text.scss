@@ -1,0 +1,10 @@
+.text-center{
+  text-align: center;
+}
+.table.text-center th{
+  text-align: center;
+}
+
+.ellipsis{
+  @include ellipsis;
+}

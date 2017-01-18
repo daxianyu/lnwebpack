@@ -1,0 +1,24 @@
+.square-wrapper{
+  position: relative;
+  padding-top: 100%;
+  .square-img{
+    width: 100%;
+    padding-top: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    overflow: hidden;
+    img{
+      position: absolute;
+      left: 0;
+      top:0;
+      width: 100%;
+    }
+  }
+}
+
+.rounded-img{
+  border-radius: 999px;
+  overflow: hidden;
+}

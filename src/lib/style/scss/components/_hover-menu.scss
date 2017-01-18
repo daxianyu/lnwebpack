@@ -1,0 +1,134 @@
+$hover-txt-color: #666;
+$hover-title-color: #333;
+$hover-txt-size: $font-size-xs;
+$hover-line-height: 1.16667;
+$hover-time-color: #bbb;
+$hover-padding: 18px;
+$hover-icon-size: 16px;
+
+
+@mixin header-height{
+  $height: $main-header-height;
+  height: $height;
+  line-height: $height;
+}
+
+
+.h-menu-group{
+  $spacing-right:$main-header-height;
+  float:right;
+  margin-right:$spacing-right;
+  position: relative;
+  border-left: $main-border;
+}
+.h-menu{
+  $arrow-width: $arrow-width/2;
+  $height: $main-header-height;
+  $width: $height;
+  width: $width;
+  float: left;
+  text-align: center;
+  border-right: $main-border;
+  @include header-height;
+  @include hand;
+
+  @for $i from 1 through 10{
+    @at-root .h-menu-group>.h-menu:nth-child(#{$i}) .show-arw{
+      left: ($width - $arrow-width)/2 + 60px * ($i - 1);
+    }
+  }
+
+  [class^='icon-'], [class^=" icon-"]{
+    color: $fc3;
+  }
+
+  @include hover{
+    background-color: rgb(247,247,247);
+  }
+
+  .show-arw{
+    display: none;
+  }
+  &:hover .show-arw{
+    display: inline-block;
+    bottom: 0;
+  }
+  .sub-menu{
+    display: none;
+    width: 4*$width;  ///到时候js计算
+    background-color: map_get($colors, "content");
+    z-index: 1;
+    text-align: left;
+    border: $main-border;
+    border-top: 1px $arrow-color solid;
+    &>li{
+      @include hand
+    }
+  }
+
+  .menu-head{
+    padding: $main-padding;
+    border-bottom: $main-border;
+    line-height: 31px;
+    color: $hover-txt-color;
+    font-size:$hover-txt-size;
+    @include clearfix;
+  }
+
+  .menu-title{
+    font-size: $hover-txt-size;
+    color: $hover-title-color;
+    padding-bottom: 8px;
+    display: block;
+    .time{
+      color: $hover-time-color;
+      float: right;
+    }
+  }
+
+  .menu-text{
+    color: $hover-txt-color;
+  }
+
+  @each $i in $label-color{
+    $index: index($label-color, $i);
+    .menu-icon-#{$index}{
+      color: $i;
+      font-size: $hover-icon-size;
+      float: left;
+      padding-right: 17px;
+    }
+  }
+
+  .menu-name{
+    line-height: $hover-icon-size;
+    color: $hover-txt-color;
+  }
+
+  &:hover{
+    .sub-menu{
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      @include clearfix;
+
+      @at-root .sub-menu>li{
+        @include hover{
+          background-color: rgb(247,247,247);
+        }
+        @include active{
+          background-color: darken(rgb(247,247,247), 5%);
+        }
+      }
+
+      .sub-menu-item{
+        padding: $hover-padding 0;
+        line-height: $hover-line-height;
+        border-bottom: $main-border;
+        font-size: $hover-txt-size;
+        display: block;
+      }
+    }
+  }
+}

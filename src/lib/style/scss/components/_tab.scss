@@ -1,0 +1,34 @@
+$label-btn-width: 124px;
+
+.container-head{
+  padding-left: 10px;
+
+  @include border-bottom();
+  .lb-btn{
+    $padding: 16px 20px;
+    $height: 18px;
+    float: left;
+    color: $fc2;
+    @include word-wrap();
+    @include hand;
+    @include word-wrapper($padding: $padding,$tCenter:true);
+    min-width: $label-btn-width;
+    line-height: $height;
+    position: relative;
+    @include hover{
+      background-color: darken(white, 5%);
+    }
+    &.active{
+      .show-arw{
+        display: block;
+      }
+      color: $fc1;
+      background-color: $tab-head-active-clr;
+    }
+    .show-arw{
+      left: ($label-btn-width - $arrow-width)/2;
+      display: none;
+    }
+  }
+}
+

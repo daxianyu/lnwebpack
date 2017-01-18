@@ -1,0 +1,6 @@
+@import "../varibles/varibles";
+@each $color, $value in $bg-color{
+  .bg-#{$color}{
+    background-color: $value;
+  }
+}

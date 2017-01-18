@@ -1,0 +1,63 @@
+@import "../varibles/varibles";
+
+
+@mixin input($input-padding, $fSize:$input-fSize, $color:$input-color){
+  font-size: $fSize;
+  color: $color;
+  @if($input-padding){
+    padding: $input-padding;
+  }
+}
+
+@mixin input-fd{  //扁平化
+  border: none;
+  margin-bottom: 0;
+  box-shadow:none;
+  line-height: 1.5;
+  &:focus{
+    box-shadow:none;
+  }
+}
+
+
+.form-inline, .form-inline-lg{
+  border: $form-inline-border;
+  border-radius: $form-inline-border-radius;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  label{
+    border-right:$form-inline-border;
+    line-height: $form-input-height;
+    float: left;
+    margin-bottom: 0;
+    width:$form-label-width;
+    text-align: right;
+    padding-right: $form-label-right-padding;
+    font-weight: normal;
+    font-size: $input-fSize;
+  }
+  .form-control{
+    input{
+      height: $form-input-height;
+      width: 100%;
+      @include input-fd;
+      @include input($input-padding: $form-input-padding);
+    }
+    position: absolute;
+    right:0;
+    left: $form-label-width + 0.5 * $column-spacing;
+  }
+  .form-content{
+    line-height: $form-input-height;
+    padding-left: 13px;
+  }
+  @include clearfix;
+}
+
+.form-inline-lg{
+  label{
+    width: $form-label-width + 15px;
+    text-align: center;
+  }
+}

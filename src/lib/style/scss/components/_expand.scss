@@ -1,0 +1,9 @@
+.collapsed{
+  max-height: 0;
+  overflow: hidden;
+  transition: all 500ms;
+  &.open{
+    max-height: 999px;
+    overflow: visible;
+  }
+}

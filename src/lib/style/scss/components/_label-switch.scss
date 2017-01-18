@@ -1,0 +1,155 @@
+@mixin label-switch-size($switch-height:32px, $switch-width:52px){
+  $switch-padding: 2px;
+  $switch-radius: $switch-height;
+  $knob-size: $switch-height - ($switch-padding * 2);
+  $knob-radius: $switch-height - ($switch-padding * 2);
+  $knob-width: $knob-size;
+  border-radius: $switch-radius;
+  height: $switch-height;
+  width: $switch-width;
+  input[type="checkbox"] {
+    + .checkbox {
+      height: $switch-height;
+      border-radius: $switch-radius;
+      width: $switch-width;
+      &::before {
+        border-radius: $switch-radius;
+        height: $knob-radius;
+        width: $switch-width - ($switch-padding * 2);
+      }
+      &::after{
+        @include size($knob-size);
+        height: $knob-radius;
+      }
+    }
+
+    &:checked {
+      + .checkbox {
+
+        &::after {
+          left: $switch-width - $knob-width - ($switch-padding);
+        }
+      }
+    }
+  }
+}
+
+@mixin label-switch-style($action-color: $main-color, $bg-color:white) {
+  input[type="checkbox"] {
+    + .checkbox {
+      background: darken($bg-color, 9%);
+      &::before {
+        background: $bg-color;
+      }
+      &::after{
+        background: $bg-color;
+      }
+    }
+    &:checked {
+      + .checkbox {
+        background: $action-color;
+
+        &::after {
+
+        }
+      }
+    }
+  }
+}
+
+///////---------///////
+.label-switch {
+  $action-color: #477DCA !default;
+  $base-background-color: white !default;
+  $switch-width: 52px;
+  $switch-padding: 2px;
+  $switch-height: 32px !default;
+  $switch-radius: $switch-height;  // 首先,直径等于高度
+  $knob-size: $switch-height - ($switch-padding * 2);
+  $knob-radius: $switch-height - ($switch-padding * 2);  //中心圆的尺寸(直径)等于高度减去两边的阴影
+  $knob-width: $knob-size; //圆的宽度
+  $switch-background: $base-background-color;
+  $switch-border-background: darken($base-background-color, 9%);
+  $switch-shadow: 0 2px 5px transparentize(black, 0.6);
+  border-radius: $switch-radius;
+  cursor: pointer;
+  display: inline-block;
+  height: $switch-height;
+  position: relative;
+  width: $switch-width;
+  margin-bottom: 0;
+  input[type="checkbox"] {
+    display: none;
+
+    + .checkbox {
+      background: $switch-border-background;
+      border: 0;
+      border-radius: $switch-radius;
+      cursor: pointer;
+      height: $switch-height;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      transition: all 0.3s ease;
+      width: $switch-width;
+      z-index: 0;
+      display: inline-block;
+
+      &::before {
+        @include position(absolute, 2px 0 0 2px);
+        background: $switch-background;
+        border-radius: $switch-radius;
+        content: "";
+        height: $knob-radius;
+        transform: scale(1);
+        transition: all 0.3s ease;
+        width: $switch-width - ($switch-padding * 2);
+        z-index: 1;
+      }
+
+      &::after {
+        @include position(absolute, 2px 0 0 2px);
+        @include size($knob-size);
+        background: $switch-background;
+        border-radius: $knob-radius;
+        box-shadow: $switch-shadow;
+        content: "";
+        transition: all 0.3s ease;
+        z-index: 2;
+      }
+    }
+
+    &:checked {
+      + .checkbox {
+        background: $action-color;
+
+        &::before {
+          transform: scale(0);
+        }
+
+        &::after {
+          left: $switch-width - $knob-width - ($switch-padding);
+        }
+      }
+    }
+  }
+}
+
+.ls-primary{
+  @include label-switch-style($main-color);
+}
+.ls-green{
+  @include label-switch-style(green)
+}
+.ls-red{
+  @include label-switch-style(red)
+}
+.ls-sm{
+  @include label-switch-size($switch-height:20px, $switch-width:38px);
+}
+.ls-md{
+  @include label-switch-size($switch-height:24px, $switch-width:48px);
+}
+.ls-lg{
+  @include label-switch-size($switch-height:30px, $switch-width:58px);
+}

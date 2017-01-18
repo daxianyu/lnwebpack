@@ -1,0 +1,267 @@
+//****************************************************************************************************************
+
+@import "components";
+@import "search";
+
+body{
+  background-color: map_get($colors, "background");
+  margin:0;
+  padding:0;
+  min-width: $page-min-width;
+}
+
+.page-wrapper{
+  padding-left: $page-side-width;
+  height: 100%;
+  position: relative;
+  min-height: 100%;
+  .page-side{
+    width: $page-side-width;
+    position: fixed;
+    left:0;
+    height:100%;
+    background-color: $page-side-bg-color;
+    z-index: map_get($z-layers, "sidebar");
+  }
+  .page-body{
+    position: relative;
+  }
+}
+
+.page-header{
+  width: 100%;
+  background-color: $header-color;
+  height: $main-header-height;
+  //border-bottom: $main-border;
+  @include clearfix;
+}
+
+.user-center{
+  float: right;
+  padding-right: $main-spacing;
+  //@include header-height;
+  .head{
+    $head-width: $header-width;
+    $head-height: $header-width;
+    $head-spacing : ($main-header-height - $head-height)/2;
+    padding: $head-spacing 5px $head-spacing $head-spacing;
+    float: left;
+    height: $main-header-height;
+    width: 5px + $head-spacing + $head-width;
+  }
+  .name{
+    float: left;
+    @include header-height;
+  }
+  @include clearfix;
+}
+
+//.sub-header{
+//  @include text-wrapper(50px, 14px, 39px);
+//}
+
+.sub-header{
+  height: 40px;
+  padding: 0 20px;
+  background-color: #fff;
+  position: relative;
+  font-size: $font-size-sm;
+  li.browser-history{
+    float: left;
+  }
+  @include clearfix;
+}
+
+.intern-label{
+  $bg-color:map_get($colors, "shadow");
+  @include table-wrapper(90px, 34px, $main-spacing, 40px);
+  background-color: $bg-color;
+  width: 100%;
+  &>*{
+
+  }
+}
+
+.intern-label-sm{
+  $bg-color:map_get($colors, "shadow");
+  @include table-wrapper(50px, 34px, $main-spacing, 40px);
+  background-color: $bg-color;
+  width: 100%;
+  &>*{
+
+  }
+}
+
+/**************************************************** sidebar *******************************************************/
+
+.logo{
+  width: 100%;
+  color:$logo-color;
+  text-align: center;
+  padding:$logo-padding;
+  line-height: 1.2;
+  background-color: $logo-bg-color;
+  .name{
+    font-size: 28px;
+  }
+  small{
+    font-size: 14px;
+  }
+}
+
+.side-menu-group{
+  color: white;
+  @include hand;
+}
+.side-menu{
+  $menu-indent: 32px;
+  $menu-tail: 20px;
+  $hover-color: $logo-color;
+  font-size: $font-size;
+
+  //菜单名与二级菜单名
+  .menu-name{
+    @include box-wrapper($side-menu-height, 16px, $menu-indent, $menu-tail);
+    display: block;
+    @include hover{
+      background-color: $hover-color;
+    }
+  }
+
+  .side-menu .menu-name{
+    padding: 12px $menu-tail*2 12px $menu-indent + $main-spacing;
+  }
+
+  .menu-group{
+    background-color: $side-menu-active-color;
+    max-height: 0;
+    transition: all 500ms;
+    overflow: hidden;
+    @include clearfix;
+  }
+  &.open>.menu-group{
+    max-height: 400px;
+    transition: all 500ms;
+  }
+
+  &.open>.menu-name>.side-icon-right{
+    transform: rotate(90deg);
+  }
+
+  //子菜单和二级子菜单
+  .sub-menu {
+    a{
+      @include box-wrapper($sub-side-menu-height, 16px, $menu-indent + $main-spacing, $menu-tail);
+      @include hover{
+        background-color: lighten($hover-color,0.2);
+      }
+      display: block;
+      color: inherit;
+    }
+    @at-root &.active{
+      background-color: $hover-color;
+    }
+  }
+
+
+  @at-root .menu-group .menu-group .sub-menu a{
+    @include box-wrapper($sub-side-menu-height, 16px, $menu-indent + 2*$main-spacing);
+    display: block;
+    color: inherit;
+
+
+  }
+  .side-icon-right{
+    float: right;
+    transition: all 500ms;
+  }
+}
+
+
+
+
+
+/****************************************************** layout *******************************************************/
+
+
+.table-wrap{
+  $key-width: 91px;
+  border-left: $main-border;
+  border-top: $main-border;
+  line-height: 40px;
+  %table-item{
+    position: relative;
+    border-bottom: $main-border;
+    border-right: $main-border;
+    overflow: hidden;
+    height: 40px;
+  }
+  .table-head{
+    @extend %table-item;
+    display: table;
+    width: 100%;
+    line-height: 0;
+    &>*{
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .limit-sm{
+      width: 40px;
+      text-align: center;
+    }
+    .limit{
+      width: 90px;
+      text-align: center;
+    }
+    .limit-lg{
+      width: 140px;
+      text-align: center;
+    }
+  }
+  .table-item{
+    @extend %table-item;
+  }
+  .table-height-fix{
+    height: 40px;
+  }
+  .table-key{
+    padding-right: 5px;
+    float: left;
+    width: $key-width;
+    text-align: right;
+  }
+  .table-value{
+    margin-left: $key-width;
+    padding-left: $main-spacing;
+    border-left: $main-border;
+    ul{
+      height: 40px;
+      overflow: hidden;
+    }
+    li{
+      float: left;
+      margin-right: 50px;
+    }
+    input{
+      height: $form-input-height;
+      width: 100%;
+      @include input-fd;
+      @include input($input-padding: $form-input-padding);
+    }
+    @include clearfix;
+  }
+  .table-action{
+    padding: 13px 0;
+    line-height: 0;
+  }
+}
+
+.table-action-out{
+  padding: 13px 0;
+  line-height:0;
+  margin-top: -15px;
+}
+
+datepicker , [datepicker] , .datepicker {
+  line-height: initial;
+}

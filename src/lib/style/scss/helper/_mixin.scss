@@ -1,0 +1,93 @@
+@mixin linear-gradient-bg($bg-color-t,$bg-color-b){
+  background-color: mix($bg-color-t, $bg-color-b, 50%);
+  background-image: linear-gradient($bg-color-t, $bg-color-b);
+}
+
+@mixin active(){
+  &:active{
+    @content
+  }
+}
+
+@mixin hover(){
+  &:hover{
+    @content
+  }
+}
+
+@mixin fill-parent() {
+  width: 100%;
+
+  @if $border-box-sizing == false {
+    box-sizing: border-box;
+  }
+}
+
+@mixin span-column-compact($i,$column:12){
+  $container-columns:$column;
+  float: left;
+  display: block;
+  width: $i * 100%/$container-columns;
+}
+
+@mixin hand{
+  cursor: pointer;
+}
+
+@mixin word-wrapper($padding:$main-spacing, $fSize:$font-size, $tCenter: false){
+  padding: $padding;
+  font-size: $fSize;
+  @if $tCenter{
+    text-align: center;
+  }
+}
+
+@mixin border-top($color: #9D78CD){
+  border-top: 1px $color solid;
+}
+
+@mixin border-bottom($color: #9D78CD){
+  border-bottom: 1px $color solid;
+}
+
+@mixin label-shadow{
+  box-shadow: 0 2px 4px 0 $border-shadow;
+  border: $main-border;
+}
+
+@mixin text-wrapper($height, $fSize, $left:0, $right:0){
+  padding: 8px $right 8px $left;
+  font-size: $fSize;
+  line-height: ($height - 8px*2) / $fSize;
+  @include clearfix;
+}
+
+@mixin box-wrapper($height, $innerHeight, $left:0, $right:0) {
+  $padding-top-down: ($height - $innerHeight)/2;
+  padding: $padding-top-down $right $padding-top-down $left;
+  line-height: $innerHeight;
+  @include clearfix;
+}
+
+@mixin table-wrapper($height, $left, $right){
+  padding:0 $right 0 $left;
+  display: table;
+  height: $height;
+  &>*{
+    vertical-align: middle;
+    //line-height: 0;
+    display: table-cell;
+  }
+}
+
+@mixin box-wrap($padding, $line-height: $line-height){
+  padding: $padding;
+  @include clearfix;
+}
+
+@mixin text-wrap($padding, $font-size: $font-size, $line-height: $line-height){
+  padding: $padding;
+  font-size: $font-size;
+  line-height: $line-height;
+  @include clearfix;
+}

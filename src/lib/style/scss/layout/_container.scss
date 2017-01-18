@@ -1,0 +1,50 @@
+.container{
+  background-color: map_get($bg-color, "content");
+  @include clearfix;
+}
+
+.wrapper{
+  padding: $main-spacing;
+  @include clearfix;
+}
+
+.wrapper-double{
+  padding: 20px;
+  @include clearfix;
+}
+
+.wrapper-aside{
+  padding: 0 $main-spacing;
+}
+
+.wrapper-top-bottom{
+  padding: $main-spacing;
+}
+
+.wrapper-padding{
+  padding-top:$main-spacing;
+  padding-left:$main-spacing;
+  &.bottom{
+    padding-bottom: $main-spacing;
+  }
+  &.right{
+    padding-right: $main-spacing;
+  }
+  @include clearfix;
+}
+
+.wrapper-margin{
+  margin-top: $main-spacing;
+  margin-left: $main-spacing;
+  &.bottom{
+    margin-bottom: $main-spacing;
+  }
+  &.right{
+    margin-right: $main-spacing;
+  }
+  @include clearfix;
+}
+
+.clear-fix{
+  @include clearfix;
+}

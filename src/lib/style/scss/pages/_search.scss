@@ -1,0 +1,101 @@
+.search-wrap{
+  border-left: $main-border;
+  border-top: $main-border;
+  line-height: 40px;
+  $search-key-width: 76px;
+  .search-item{
+    position: relative;
+    border-bottom: $main-border;
+    border-right: $main-border;
+    //overflow: hidden;
+  }
+  .search-height-fix{
+    height: 40px;
+  }
+  .search-key{
+    padding-right: 5px;
+    float: left;
+    width: $search-key-width;
+    text-align: right;
+  }
+  .search-value{
+    margin-left: $search-key-width;
+    padding-left: $main-spacing;
+    padding-right: 100px;
+    border-left: $main-border;
+    ul{
+      max-height: 40px;
+      overflow: hidden;
+      transition: all 500ms;
+    }
+    li{
+      float: left;
+      margin-right: 50px;
+    }
+    input{
+      height: $form-input-height - 1;
+      width: 100%;
+      @include input-fd;
+      @include input($input-padding: $form-input-padding);
+    }
+    @include clearfix;
+  }
+  .search-context{
+    margin-left:$search-key-width;
+    border-left:$main-border;
+    input{
+      height: $form-input-height - 1;
+      width: 100%;
+      @include input-fd;
+      @include input($input-padding: $form-input-padding);
+      &:after{
+        content: " ";
+        float: right;
+        border: 1px solid;
+      }
+    }
+    label.icon{
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-left: $main-border;
+    }
+    @include clearfix;
+  }
+  .search-ext{
+    width: 100px;
+    margin-right: $main-spacing;
+    position: absolute;
+    right: 8px;
+    top: 0;
+    height: auto;
+    text-align: right;
+  }
+  .search-action{
+    padding: 13px 0;
+    border-bottom: $main-border;
+    border-right: $main-border;
+    line-height: 0;
+  }
+}
+
+.extend{
+  .search-value ul{
+    max-height: 999px!important;
+    transition: all 500ms;
+  }
+}
+
+.search-tip{
+  @include hand;
+}
+.selected{
+  color: $main-color;
+}
+.search-tip-active{
+  display: inline-block;
+  padding:0 10px;
+  font-size: 12px;
+}

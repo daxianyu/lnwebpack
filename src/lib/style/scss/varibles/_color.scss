@@ -1,0 +1,29 @@
+$main-border-color:#f3f3f3;
+
+$colors:(       //类内颜色
+        "background": rgb(243,243,243),
+        "content": white,
+        "shadow": #e8e8e8,
+);
+
+//colors
+$main-color: #21ccb2;
+
+
+
+//background colors
+$bg-color:(     //作为单独的class出来
+        "content": map_get($colors, "content")
+);
+
+
+$red : #21ccb2;
+$orange : #FFA500;
+$yellow : #FFFF00;
+$green : #008000;
+$blueGreen : #00FFFF;
+$blue : #0000FF;
+$purple : #800080;
+$white : #ffffff;
+
+$border-color: #F2F2F2;
