@@ -4,16 +4,15 @@
 @import "base/base";
 
 // Plugins
-@import "../../bourbon/bourbon";
+@import "../../../assets/bourbon/bourbon";
 @import "helper/cover";
-@import "../../base/base";
-@import "../../neat/neat";
+@import "../../../assets/base/base";
+@import "../../../assets/neat/neat";
 
 // Helper
 @import "helper/mixin";
 @import "helper/function";
 @import "helper/fix";
-
 
 // Components
 @import "components/button";

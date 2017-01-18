@@ -4,6 +4,9 @@ window.onerror = function () {
     return true;
 };
 
-require('jquery');
+// import * as avalon from 'avalon2';
+
+let avalon = require('avalon2');
 require('./test.css');
-console.log('page1');
+console.log(avalon);
+

@@ -23,9 +23,9 @@ function getEntry (globpath) {
     return entries;
 }
 
-function isDev () {
+function isProd () {
     // export NODE_ENV=test  直接在终端中键入
-    return process.env.NODE_ENV === 'dev';
+    return process.env.NODE_ENV === 'product';
 }
 
 function getLoaders () {
@@ -80,7 +80,7 @@ function getPlugin () {
             // }),
         ],
         pages = getEntry('./src/pages/**/*.html');
-    if (!isDev()) {
+    if (isProd()) {
         defaultPlugin.push(
             new webpack.optimize.UglifyJsPlugin({
                 compress: {
@@ -131,7 +131,7 @@ module.exports = {
     },
     eslint: {
         configFile: Setting.root + '/.eslintrc.js', // 指定eslint的配置文件
-        failOnWarning: false,                       // 报warning终止webpack
+        failOnWarning: true,                       // 报warning终止webpack
         failOnError: true,                          // 报error终止
         cache: true,                                // 开启eslint的cache，cache存在node_modules/.cache目录里
     },

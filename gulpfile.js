@@ -7,36 +7,39 @@ const gulp = require('gulp'),
     merge = require('webpack-merge'),
     gulpRev = require('gulp-rev'),
     webpackStream = require('webpack-stream'),
-    webpackDllConfig = require('./gulp/webpack.dll.js'),
     Setting = require('./gulp/directory'),
     connect = require('gulp-connect'),
-    WebpackDevServer = require('webpack-dev-server'),
     gutil = require('gutil'),
     webpackConfig = require('./gulp/webpack.config'),
     raw = {
-        jquery: Setting.nodeModules + '/jquery/dist/jquery.min.js',
-        angular: Setting.nodeModules + '/angular/angular.min.js',
+        // jquery: Setting.nodeModules + '/jquery/dist/jquery.min.js',
+        // angular: Setting.nodeModules + '/angular/angular.min.js',
+        avalon2: Setting.nodeModules + '/avalon2/dist/avalon.js',
     },
     names = {},
     externals = {
-        jquery: 'window.jquery',
-        angular: 'window.angular',
+        // jquery: 'window.jquery',
+        // angular: 'window.angular',
+        avalon2: 'window.avalon',
     };
+    // webpackDllConfig = require('./gulp/webpack.dll.js'),
+    // WebpackDevServer = require('webpack-dev-server'),
 
-    /** 首先运行gulp b 运行第三方库文件打包以及项目构建
- *  如果第三方库没有变动,则直接运行gulp项目构建
- *  也可运行gulp dll 只对第三方库进行打包
- *  */
-
-gulp.task('dll', function (done) {
-    webpack(webpackDllConfig, function () {
-        done();
-    });
-});
 
 gulp.task('webpack', function (done) {                   // 使用原生 webpack 打包
-    rm('-rf', Setting.statics);done();
-    webpack(webpackConfig, function (err, stats) {
+    let fileReg = /\/([^\/]+)$/,
+        revMani = JSON.parse(fs.readFileSync(Setting.root + '/rev.json'));
+    for (let item in raw) {
+        if (raw[item]) {
+            names[item] = '/statics/' + revMani[raw[item].match(fileReg)[1]];
+        }
+    }
+    done();
+    webpack(merge(webpackConfig, {
+        watch: true,
+        externals: externals,
+        htmlTag: names,
+    }), function (err, stats) {
         cp('-r', './statics/js/', Setting.statics);
         if (err) {
             throw new gutil.PluginError('webpack', err);
@@ -96,16 +99,21 @@ gulp.task('server', function (done) {                    // 纯server服务
     });
 });
 
-gulp.task('webpack-dev-server', function () {        // 开发加服务器加监听
-    new WebpackDevServer(webpack(webpackConfig), {}).listen(8889, 'localhost', function (err) {
-        if (err) {
-            throw new gutil.PluginError('webpack-dev-server', err);
-        }
-        // Server listening
-        gutil.log('[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html');
-    });
-});
+// gulp.task('dll', function (done) {
+//     webpack(webpackDllConfig, function () {
+//         done();
+//     });
+// });
+// gulp.task('webpack-dev-server', function () {        // 开发加服务器加监听
+//     new WebpackDevServer(webpack(webpackConfig), {}).listen(8889, 'localhost', function (err) {
+//         if (err) {
+//             throw new gutil.PluginError('webpack-dev-server', err);
+//         }
+//         // Server listening
+//         gutil.log('[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html');
+//     });
+// });
 
-gulp.task('b', gulp.series('webpack', 'server'));
-gulp.task('bs', gulp.series('copyModules', 'server', 'ws'));
-gulp.task('default', gulp.series('webpack'));
+gulp.task('build', gulp.series('copyModules', 'server', 'webpack'));        // 推荐用这个作为起始构建
+gulp.task('bs', gulp.series('copyModules', 'server', 'ws'));            // gulp-stream 方式，会导致eslint出错后不能重启
+gulp.task('default', gulp.series('server', 'webpack'));                 // 第二次构建则直接用gulp即可
