@@ -1,7 +1,7 @@
 /**
  * Created by tangjianfeng on 2016/10/23.
  */
-/* global require, module */
+/* global require, module, process */
 
 const _ = require('lodash'),
     path = require('path'),
@@ -11,6 +11,7 @@ const _ = require('lodash'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
+    WebpackMd5Hash = require('webpack-md5-hash'),
     Setting = require('./directory');
 
 function getEntry (globpath) {
@@ -20,6 +21,11 @@ function getEntry (globpath) {
         entries[pathname] = entry;
     });
     return entries;
+}
+
+function isDev () {
+    // export NODE_ENV=test  直接在终端中键入
+    return process.env.NODE_ENV === 'dev';
 }
 
 function getLoaders () {
@@ -52,15 +58,21 @@ function getPlugin () {
             //     'jquery': 'jquery.js',
             //     'jQuery': 'jquery.js'
             // }),
+            new webpack.DefinePlugin({
+                'process.env': {
+                    'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+                },
+            }),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common',
-                filename: 'statics/js/common_[hash:6].js',
+                filename: 'statics/js/common_[chunkhash:6].js',
                 minChunks: 2,
             }),
             new ScriptExtHtmlWebpackPlugin({
                 defaultAttribute: 'defer',
             }),
-            new ExtractTextPlugin('statics/css/[name]_[hash:6].css'),
+            new ExtractTextPlugin('statics/css/[name]_[contenthash:6].css'),
+            new WebpackMd5Hash(),
             // new webpack.DllReferencePlugin({
             //     context: Setting.root,
             //     manifest: require(Setting.root + '/manifest.json'),
@@ -68,6 +80,15 @@ function getPlugin () {
             // }),
         ],
         pages = getEntry('./src/pages/**/*.html');
+    if (!isDev()) {
+        defaultPlugin.push(
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    warnings: false,
+                },
+            })
+        );
+    }
     _.each(pages, function (value, key, object) {
         let conf = {
             template: path.resolve(Setting.root, value),
@@ -94,9 +115,9 @@ module.exports = {
     output: {
         path: Setting.dest,
         publicPath: '/',                                // 即以path为基
-        filename: 'statics/js/[name]_[hash:6].js',      // 不能'/'打头，分隔符写到path中
+        filename: 'statics/js/[name]_[chunkhash:6].js',      // 不能'/'打头，分隔符写到path中
     },
-    devtool: 'eval',
+    // devtool: 'eval',
     module: {
         preLoaders: [
             {
