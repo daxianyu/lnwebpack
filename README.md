@@ -6,8 +6,7 @@
 
 ## install:
 ### npm install gulpjs/gulp#4.0 -g 
-    npm install gulpjs/gulp#4.0 --save
-    npm install
+### npm install
 
 ## usage:
 ### gulp b
