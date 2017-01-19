@@ -129,7 +129,7 @@ module.exports = {
         filename: 'statics/js/[name]_[chunkhash:6].js',      // 不能'/'打头，分隔符写到path中
         chunkFilename: 'statics/js/chunk_[name].js',
     },
-    // devtool: 'eval',
+    devtool: 'eval-source-map',
     module: {
         preLoaders: [
             {
