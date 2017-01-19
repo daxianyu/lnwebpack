@@ -116,6 +116,7 @@ module.exports = {
         path: Setting.dest,
         publicPath: '/',                                // 即以path为基
         filename: 'statics/js/[name]_[chunkhash:6].js',      // 不能'/'打头，分隔符写到path中
+        chunkFilename: 'statics/js/chunk_[name].js',
     },
     // devtool: 'eval',
     module: {
