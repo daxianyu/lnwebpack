@@ -1,0 +1,32 @@
+$statisticBG:#F3F6F9;
+
+.statistic{
+  text-align: center;
+  width:230px;
+  background:$statisticBG;
+  cursor: pointer;
+  .data{
+    line-height: 100px;
+    font-size: 50px;
+    color:$blueFont;
+    .unit{
+      font-size: 24px;
+      margin-bottom:-14px;
+    }
+  }
+  .name{
+    line-height: 40px;
+    font-size: 14px;
+  }
+}
+
+.statistic-wall{
+  margin-bottom:20px;
+  .wall{
+    @include pie-clearfix;
+    .statistic{
+      margin:10px 10px 0px 0px;
+      float:left;
+    }
+  }
+}

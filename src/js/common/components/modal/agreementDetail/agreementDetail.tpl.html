@@ -1,0 +1,24 @@
+<div>
+  <xmp ms-widget="{is:'cap-modal',id:'new_agree_detail_'+@$id,show:@show,classes:'modal-sm'}">
+    <span slot="header">{{@title}}协议详情</span>
+    <div slot="content">
+      <div style="height:350px;overflow: auto;">
+        <table class="table cell-bordered thead-default">
+          <tr>
+            <th width="30%">起运地</th>
+            <th width="30%">目的地</th>
+            <th width="20%">起运重量</th>
+            <th width="20%">基准运价</th>
+          </tr>
+          <tr :for="item in @list">
+            <td>{{item.from}}</td>
+            <td>{{item.to}}</td>
+            <td>{{item.minWei}}</td>
+            <td>{{item.unitPrice}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="paginator" id="pagination_agree_detail"></div>
+    </div>
+  </xmp>
+</div>

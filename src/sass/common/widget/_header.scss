@@ -1,0 +1,64 @@
+@charset "utf-8";
+//@import "compass/css3";
+@import "../variables";
+
+header{
+  min-width: $bodyMinWidth;
+  background:$darkBlueBG;
+  .wrapper{
+    width:$contentWidth;
+    margin: 0 auto;
+    height:68px;
+    padding-top:15px;
+    @include pie-clearfix;
+    color:#fff;
+    line-height: 35px;
+    .system-name{
+      line-height: 25px;
+      padding-left:20px;
+      border-left:1px solid #fff;
+      margin-left:15px;
+      margin-top:5px;
+      font-size: 18px;
+    }
+    .top-menu{
+      margin-top:10px;
+      padding-left:20px;
+      float:right;
+      @include pie-clearfix;
+      .menu{
+        line-height: 15px;
+        float:left;
+        padding:0 10px;
+        border-left:1px solid #fff;
+        position:relative;
+        cursor: pointer;
+        &:first-child{
+          border-left:none;
+        }
+        &:hover{
+          .menu-list{
+            display: block;
+          }
+        }
+        .menu-list{
+          width:144px;
+          display:none;
+          position:absolute;
+          top:100%;
+          left:0;
+          padding-top:25px;
+          padding-bottom:10px;
+          background: $darkBlueBG;
+          @include border-radius(4px);
+          z-index: 1000;
+          .item{
+            padding:10px 15px;
+            color:#fff;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

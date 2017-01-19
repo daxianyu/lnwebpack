@@ -1,0 +1,31 @@
+$toast-radius:8px;
+$toast-bg:rgba(0,0,0,0.40);
+
+.toast{
+  @include border-radius($toast-radius);
+  background: $toast-bg;
+  position:fixed;
+  top:0px;
+  left:50%;
+  padding:5px;
+  color:#fff;
+  transition: top 0.3s cubic-bezier(.3,.11,.11,1.27),opacity 0.3s ease;
+  z-index: 9000;
+}
+
+.toast-enter{
+  top:80px;
+}
+
+.toast-leave{
+  opacity: 0;
+}
+
+.toast{
+  .toast-msg{
+    line-height: 28px;
+    padding:0px 15px;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+}

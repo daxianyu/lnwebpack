@@ -1,0 +1,57 @@
+.btn{
+  display: inline-block;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
+}
+
+.btn-lg{
+  @include button-size($btn-lg-padding-y, $btn-lg-padding-x, $btn-lg-font-size, $btn-border-radius);
+}
+
+.btn-sm{
+  @include button-size($btn-sm-padding-y, $btn-sm-padding-x, $btn-sm-font-size, $btn-border-radius);
+}
+
+.btn-red {
+  @include button-variant(#fff, $btn-red-bg, $btn-red-border);
+}
+.btn-blue {
+  @include button-variant(#fff, $btn-blue-bg, $btn-blue-border);
+}
+.btn-yellow {
+  @include button-variant(#fff, $btn-yellow-bg, $btn-yellow-border);
+}
+.btn-tag{
+  @include button-variant($gray, $btn-tag-color, $btn-tag-color);
+}
+
+.btn-outline-red {
+  @include button-outline-variant($btn-red-bg);
+}
+.btn-outline-blue {
+  @include button-outline-variant($btn-blue-bg);
+}
+.btn-outline-yellow {
+  @include button-outline-variant($btn-yellow-bg);
+}
+
+.btn-block{
+  width:100%!important;
+}
+
+//special
+.btn-tag{
+  position: relative;
+  [class*=icon-]{
+    position: absolute;
+    top:-6px;
+    right:-6px;
+    z-index: 10;
+  }
+}

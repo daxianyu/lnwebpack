@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>demo</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link type="image/x-icon" href="/src/images/favico.ico" rel="icon"/>
+</head>
+
+<body :controller="app" class="ms-controller">
+	<div>
+		HelloWorld {{name}}
+	</div>
+	<xmp ms-widget="{is:'cap-header',id:'header'}"></xmp>
+	<xmp ms-widget="[{is:'cap-tab',id:'tab'},@tab]"></xmp>
+
+<% for (var item in webpackConfig.htmlTag) { %><script type="text/javascript" src="<%= webpackConfig.htmlTag[item] %>" defer="true"></script><% } %>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<div :class="['tag-picker-container',@tagPickerShow?'active':'']" :click="@showPicker">
+  <span :visible="@pickedItems.length==0" class="placeholder">{{@placeholder}}</span>
+  <div class="picked-container" :visible="@pickedItems.length>0">
+    <span class="btn btn-tag btn-sm tag" :for="pi in @pickedItems">{{@getItemText(pi)}}<span class="icon-circle-close" :click="@deleteTag(pi) | stop"></span></span>
+  </div>
+  <div class="items-container" :visible="@tagPickerShow">
+    <span class="item" :for="item in @items | minus(@pickedItems,@valueField)" :click="@itemClick(item)">{{@getItemText(item)}}</span>
+    <div class="confirm"><a class="blue-font" :click="@confirm | stop">确定</a></div>
+  </div>
+</div>

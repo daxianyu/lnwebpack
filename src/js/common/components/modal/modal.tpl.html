@@ -1,0 +1,14 @@
+<div class="modal-mask" :visible="@show">
+  <div class="modal-container" :class="[@classes]">
+    <div class="modal-header">
+      <slot name="header"></slot>
+      <span class="close" :click="@show=false">x</span>
+    </div>
+    <div class="modal-body">
+      <slot name="content"></slot>
+    </div>
+    <div class="modal-footer">
+      <slot name="footer"></slot>
+    </div>
+  </div>
+</div>

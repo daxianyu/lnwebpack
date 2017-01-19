@@ -1,0 +1,17 @@
+define([
+    'jquery',
+    'lib/text!./editDiscount.tpl.html',
+    'common/webapi'
+],function($,tpl,webapi){
+    avalon.component('cap-edit-discount-modal',{
+        template:tpl,
+        defaults:{
+            show:false,
+            title:'',
+            isNew:false,
+            onReady:function(){
+                if(this.vmId!==undefined)this.vmId=this.$id;
+            }
+        }
+    })
+});

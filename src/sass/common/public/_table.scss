@@ -1,0 +1,119 @@
+$table-margin-bottom:20px;
+$table-cell-padding-y:8px;
+$table-cell-padding-x:10px;
+$table-lg-cell-padding-y:15px;
+$table-lg-cell-padding-x:20px;
+$table-border-width:1px;
+$table-border-color:#ddd;
+$table-body-bg:$body-bg;
+$table-bg-hover:#f5f5f5;
+$table-striped-bg-hover:#f9f9f9;
+$table-head-color:#666;
+$table-head-bg:#f4f4f4;
+$table-body-font-size:11px;
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $table-margin-bottom;
+
+  td{
+    font-size: $table-body-font-size;
+  }
+
+  th,
+  td {
+    padding: $table-cell-padding-y $table-cell-padding-x;
+    /*vertical-align: top;*/
+    border-top: $table-border-width solid $table-border-color;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    // border-bottom: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  tbody + tbody {
+    border-top: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  .table {
+    background-color: $table-body-bg;
+  }
+}
+
+.table-lg {
+  th{
+    padding-left:$table-lg-cell-padding-x;
+  }
+  td {
+    padding: $table-lg-cell-padding-y $table-lg-cell-padding-x;
+  }
+}
+
+.tr-bordered {
+  tr{
+    border: $table-border-width solid $table-border-color;
+  }
+}
+
+.tr-bordered-vertical {
+  tr{
+    border-top: $table-border-width solid $table-border-color;
+    border-bottom: $table-border-width solid $table-border-color;
+  }
+}
+
+.cell-bordered{
+  th,
+  td {
+    border: $table-border-width solid $table-border-color;
+  }
+}
+
+.table-striped{
+  >tbody >tr:nth-child(odd){
+    background-color: $table-striped-bg-hover;
+  }
+}
+
+.table-hover {
+  tbody tr {
+    &:hover {
+      background-color: $table-bg-hover !important;
+    }
+  }
+}
+
+.table-clickable{
+  tbody tr {
+    cursor: pointer;
+  }
+}
+
+.thead-borderless{
+  thead > tr{
+    border:none;
+    >th{
+      border:none;
+    }
+  }
+}
+
+.thead-default {
+  th {
+    color: $table-head-color;
+    background-color: $table-head-bg;
+  }
+}
+
+.table-bottom-expand{
+  margin-top:-($table-margin-bottom+1px);
+  margin-bottom:$table-margin-bottom;
+  border:$table-border-width solid $table-border-color;
+  padding:10px 20px;
+  color:$gray;
+  text-align: right;
+  background: #F5F9FA;
+  cursor: pointer;
+}

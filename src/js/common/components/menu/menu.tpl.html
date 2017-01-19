@@ -1,0 +1,18 @@
+<ul class="left-menu">
+    <li class="menu" :for="item in @menu">
+        <a href="javascript:void(0)" ms-attr="{href:item.url?item.url:'javascript:void(0)'}" ms-click="item.expand=!item.expand">
+            <div class="menu-name" :class="item.name==@current?'active':''">
+                <i class="icon fl" :class="[item.iconClass]"></i>
+                <span class="name">{{item.text}}</span>
+                <i class="icon-angle-right angle fr" :visible="item.children&&!item.expand"></i>
+                <i class="icon-angle-down angle fr" :visible="item.children&&item.expand"></i>
+                <span class="badge fr" :visible="item.name=='todo'&&@todoNum&&@todoNum>0">{{@todoNum}}</span>
+            </div>
+        </a>
+        <ul class="sub-menu-group" :visible="item.expand">
+            <a href="javascript:void(0)" :for="child in item.children" ms-attr="{href:child.url?child.url:'javascript:void(0)'}">
+                <li class="sub-menu" :class="child.name==@current?'active':''">{{child.text}}</li>
+            </a>
+        </ul>
+    </li>
+</ul>

@@ -15,16 +15,17 @@ const gulp = require('gulp'),
         jquery: Setting.nodeModules + '/jquery/dist/jquery.min.js',
         // angular: Setting.nodeModules + '/angular/angular.min.js',
         avalon2: Setting.nodeModules + '/avalon2/dist/avalon.js',
+        // vue: Setting.nodeModules + '/vue/dist/vue.min.js',
     },
     names = {},
     externals = {
         jquery: 'window.jquery',
         // angular: 'window.angular',
         avalon2: 'window.avalon',
+        // vue: 'window.vue',
     };
     // webpackDllConfig = require('./gulp/webpack.dll.js'),
     // WebpackDevServer = require('webpack-dev-server'),
-
 
 gulp.task('webpack', function (done) {                   // 使用原生 webpack 打包
     let fileReg = /\/([^\/]+)$/,

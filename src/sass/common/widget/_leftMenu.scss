@@ -1,0 +1,43 @@
+$menuPadding:15px 15px 15px 20px;
+$subMenuPadding:15px 15px 15px 78px;
+$activeLeftBorderColor:#529AED;
+$activeBG:#D2E2F2;
+
+.left-menu{
+  float: left;
+  width:200px;
+  background: #fff;
+  font-size: 14px;
+  cursor:pointer;
+  .menu{
+    .menu-name{
+      padding:$menuPadding;
+      .icon{
+        margin-top:2px;
+      }
+      .name{
+        padding-left:15px;
+      }
+      .angle{
+        margin-top:5px;
+      }
+      &:hover{
+        border-left:3px solid $activeLeftBorderColor;
+        background: $activeBG;
+      }
+    }
+    .sub-menu-group{
+      .sub-menu{
+        padding:$subMenuPadding;
+        &:hover{
+          border-left:3px solid $activeLeftBorderColor;
+          background: $activeBG;
+        }
+      }
+    }
+  }
+  .active{
+    border-left:3px solid $activeLeftBorderColor;
+    background: $activeBG;
+  }
+}

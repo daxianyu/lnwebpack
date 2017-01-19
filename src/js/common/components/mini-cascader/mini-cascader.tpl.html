@@ -1,0 +1,23 @@
+<span class="mini-cascader-wrapper" :class="[@classes]">
+  <span class="mini-cascader-picker" :click="@toggle | stop">
+    <span :visible="!@hasResult" class="input-wrapper">
+      <input type="text" ms-attr="{placeholder:@placeholder}" readonly>
+    </span>
+    <span class="mini-cascader-picker-label">{{@displayValue}}</span>
+    <i class="mini-cascader-picker-clear" :visible="@hasResult" :click="@clear | stop">x</i>
+    <i class="mini-cascader-picker-arrow fa fa-angle-down" :class="@showMenu?'mini-cascader-picker-arrow-expand':''"></i>
+  </span>
+  <div :visible="@showMenu" class="mini-cascader-menu">
+    <div class="list" :for="(i, list) in @menuLists">
+      <div class="mini-cascader-search-wrapper">
+        <input class="mini-cascader-search" :visible="@searchable" :duplex-string="@searchInputs[i]"/>
+        <i class="icon-search"></i>
+      </div>
+      <ul>
+        <li :for="(j,option) in list|cascaderSearchFilter(@searchInputs[i],@textField)" :class="@getItemValue(@selectedOptions[i])==@getItemValue(option)?'active':''"
+          :click="@chooseOption(i,option) | stop">{{@getItemText(option)}}</li>
+      </ul>
+    </div>
+  </div>
+</span>
+

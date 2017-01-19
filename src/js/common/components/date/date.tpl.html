@@ -1,0 +1,9 @@
+<div class="input-group" :class="[@classes]">
+    <input type="text" class="form-input" readonly :duplex="@text" :click="@showDatePicker()" ms-attr="{placeholder:@placeholder,'gldp-id':'date-picker'+@$id}">
+    <span class="input-group-icon" :if="!@value || @value==0">
+        <i class="icon-calendar" ></i>
+    </span>
+    <span class="input-group-icon hand-cursor" :if="@value && @value!=0" :click="@reset">
+        <i class="gray-font" >x</i>
+    </span>
+</div>

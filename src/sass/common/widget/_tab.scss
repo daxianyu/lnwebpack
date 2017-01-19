@@ -1,0 +1,36 @@
+$tabBarBottomWidth:1px;
+$tabBorderWidth:1px;
+$tabPadding:8px 32px;
+
+$tabBlueBorderHeight:3px;
+$tabBlueBorderPadding:12px 16px;
+
+.tab-bar{
+  border-bottom:$tabBarBottomWidth solid $grayBorder;
+  margin-bottom:20px;
+  .tab-list{
+    margin-bottom:-$tabBarBottomWidth;
+    @include pie-clearfix;
+    .tab{
+      cursor: pointer;
+      float:left;
+      border:$tabBorderWidth solid $grayBorder;
+      padding:$tabPadding;
+      &.active{
+        color:#fff;
+        background: $blueBG;
+        border:$tabBorderWidth solid $blueBG;
+      }
+    }
+    .tab-blue-border{
+      cursor: pointer;
+      float:left;
+      color: $grayFont;
+      padding:$tabBlueBorderPadding;
+      &.active{
+        color:$blueFont;
+        border-bottom:$tabBlueBorderHeight solid $blueBG;
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<div class="tab-bar">
+  <ul class="tab-list">
+    <li :class="[(@type=='default' ? 'tab' : 'tab-blue-border'),(item.value==@value?'active':'')]" :for="item in @options" :click="@itemClick(item.value)">
+      {{item.text}}
+      <span :visible="@showCount">（{{item.count}}）</span>
+    </li>
+  </ul>
+</div>

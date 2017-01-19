@@ -1,0 +1,24 @@
+.dropdown{
+  position:relative;
+  .menu-list{
+    position: absolute;
+    left:-1px;
+    right:-1px;
+    z-index: 20;
+    &.top{
+      bottom:100%;
+    }
+    &.bottom{
+      top:100%;
+    }
+    .btn{
+      width:100%;
+      display: block;
+      border-radius: 0px;
+      &:not(:first-child){
+        border-top:none;
+      }
+    }
+  }
+}
+

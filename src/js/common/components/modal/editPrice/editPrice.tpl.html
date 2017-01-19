@@ -1,0 +1,91 @@
+<div class="modal-mask" :visible="@show">
+    <div class="modal-container" style="width: 518px;">
+        <div class="modal-header">
+            {{@isNew ? '添加报价' : '修改报价'}}
+            <span class="close" :click="@show=false">x</span>
+        </div>
+        <div class="modal-body" style="padding-top:0px;padding-bottom:0px">
+            <form :validate="@editPriceValidate">
+                <div class="form-row sm col-row">
+                    <label class="form-label col-flow-4">路线</label>
+                    <div class="col-flow-18">
+                        <label class="form-label black-font">{{@getAddress(@price.fromAddress)}}</label>
+                        <i class="icon-arrow"></i>
+                        <label class="form-label black-font">{{@getAddress(@price.toAddress)}}</label>
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-row sm col-row form-border-bottom">
+                    <label for="" class="form-label col-flow-4">可运货物</label>
+                    <div class="col-flow-12">
+                        <xmp ms-widget="[{is:'cap-tag-picker',id:'tag_picker_'+@$id},@tagPicker]"></xmp>
+                        <!--<input type="hidden" :duplex="@getPickedProducts().length" :attr="{id:'products_'+@$id}" greater-include="false" :rules="{required:true,greater:'0'}">-->
+                    </div>
+                </div>
+                <hr/>
+                <div> <!--style="max-height: 261px;overflow-y: auto;overflow-x: hidden;"-->
+                    <ul>
+                        <li :for="(index,option) in @price.priceQuotes">
+                            <div class="form-row sm col-row">
+                                <label class="form-label col-flow-4">报价{{index+1}}</label>
+                                <div class="col-flow-18 col-row">
+                                    <div class="col-flow-24 col-row">
+                                        <div class="col-flow-12">
+                                            <div class="col-row" :class="[@errorInputs.indexOf('type_'+index+@$id)>-1?'has-error':'']">
+                                                <label class="form-label col-flow-10 black-font">计价方式</label>
+                                                <xmp :attr="{id:@$id}" ms-widget="[{is:'cap-select',id:'unit_select_'+index+@$id,classes:'col-flow-14 sm'},option.unitSelectConfig]"></xmp>
+                                                <input type="hidden" :duplex="option.unitSelectConfig.value" :attr="{id:'type_'+index+@$id}" :rules="{required:true}">
+                                            </div>
+                                        </div>
+                                        <label class="form-label col-flow-3 black-font" :visible="option.unitSelectConfig.value!='100'">单价</label>
+                                        <div class="col-flow-9 input-group" :visible="option.unitSelectConfig.value!='100'" :class="[@errorInputs.indexOf('unit_price_'+index+@$id)>-1?'has-error':'']">
+                                            <input type="text" class="form-input" :duplex="option.unitPrice" :on-keypress="@floatNumberKeyPress($event)" :attr="{id:'unit_price_'+index+@$id}" greater-include="false" :rules="{required:true,greater:'0'}">
+                                            <span class="input-group-icon">元/{{option.unit}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-flow-24 col-row margin-top-10" :visible="option.unitSelectConfig.value=='100'">
+                                        <label class="form-label col-flow-5 black-font">起运重量</label>
+                                        <div class="col-flow-7 input-group" :visible="option.unitSelectConfig.value=='100'" :class="[@errorInputs.indexOf('ship_weight_'+index+@$id)>-1?'has-error':'']">
+                                            <input type="text" class="form-input" :duplex="option.minWei" :on-keypress="@floatNumberKeyPress($event)" :attr="{id:'ship_weight_'+index+@$id}" greater-include="false" :rules="{required:true,greater:'0'}">
+                                            <span class="input-group-icon">{{option.unit}}</span>
+                                        </div>
+                                        <label class="form-label col-flow-3 black-font">单价</label>
+                                        <div class="col-flow-9 input-group" :class="[@errorInputs.indexOf('unit_price_'+index+@$id)>-1?'has-error':'']">
+                                            <input type="text" class="form-input" :duplex="option.unitPrice" :on-keypress="@floatNumberKeyPress($event)" :attr="{id:'unit_price_'+index+@$id}" greater-include="false" :rules="{required:true,greater:'0'}">
+                                            <span class="input-group-icon">元/{{option.unit}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="form-label col-flow-2 red-font text-right" :click="@delPrice(index,option)">删除</a>
+                            </div>
+                            <hr/>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-row sm col-row">
+                    <label class="form-label col-flow-4">新报价</label>
+                    <div class="col-flow-5">
+                        <a class="btn btn-outline-blue btn-block btn-sm" :click="@addPrice()">+添加新报价</a>
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-row sm col-row">
+                    <label class="form-label col-flow-4">优惠政策</label>
+                    <xmp ms-widget="[{is:'cap-select',id:'discount_select_'+@$id,classes:'col-flow-10 sm'},@discountSelectConfig]"></xmp>
+                </div>
+                <hr/>
+                <div class="form-row sm col-row"> <!--:class="[@errorInputs.indexOf('period_'+@$id)>-1?'has-error':'']">-->
+                    <label class="form-label col-flow-4">报价有效期</label>
+                    <xmp ms-widget="[{is:'cap-select',id:'day_select_'+@$id,classes:'col-flow-10 sm'},@dayConfig]"></xmp>
+                    <!--<input type="hidden" :duplex="@dayConfig.value" :attr="{id:'period_'+@$id}" :rules="{required:true}">-->
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer col-row text-center">
+            <div class="col-flow-12 col-offset-left-6">
+                <a class="btn btn-blue btn-block" :click="@submit()">提交</a>
+            </div>
+        </div>
+    </div>
+</div>

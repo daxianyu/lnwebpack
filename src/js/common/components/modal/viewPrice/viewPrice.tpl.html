@@ -1,0 +1,85 @@
+<div class="modal-mask" :visible="@show">
+    <div class="modal-container" style="width: 518px;">
+        <div class="modal-header">
+            {{@isView ? '查看报价' : '审核报价'}}
+            <span class="close" :click="@show=false">x</span>
+        </div>
+        <div class="modal-body">
+            <div class="form-row sm col-row">
+                <label class="form-label col-flow-4">路线</label>
+                <div class="col-flow-18">
+                    <label class="form-label black-font">{{@getAddress(@price.fromAddress)}}</label>
+                    <i class="icon-arrow"></i>
+                    <label class="form-label black-font">{{@getAddress(@price.toAddress)}}</label>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-row sm col-row">
+                <label for="" class="form-label col-flow-4">可运货物</label>
+                <div class="col-flow-12">
+                    <ul :visible="@price.productCategorys && @price.productCategorys.length>0">
+                        <li class="fl margin-right-10 margin-bottom-10" :for="option in @price.productCategorys">
+                            {{option.name}}
+                        </li>
+                    </ul>
+                    <label class="form-label black-font" :visible="!@price.productCategorys || @price.productCategorys.length==0">暂无可运货物</label>
+                </div>
+            </div>
+            <hr/>
+            <div style="max-height: 174px;overflow-y: auto;overflow-x: hidden;" :visible="@price.priceQuotes.length>0">
+                <ul >
+                    <li class="form-row sm col-row" :for="(index,option) in @price.priceQuotes">
+                        <div class="col-flow-24">
+                            <label class="form-label col-flow-4">报价{{index+1}}</label>
+                            <div class="col-flow-18 col-row">
+                                <div class="col-flow-24 col-row">
+                                    <label class="form-label col-flow-5">计价方式</label>
+                                    <label class="form-label col-flow-5 black-font">{{option.calCategoryText}}</label>
+                                </div>
+                                <div class="col-flow-24 col-row margin-top-10">
+                                    <label class="form-label col-flow-5">起运重量</label>
+                                    <label class="form-label col-flow-5 black-font">{{option.minWei}}{{option.unit}}</label>
+
+                                    <label class="form-label col-flow-3">单价</label>
+                                    <label class="form-label col-flow-6 black-font">{{option.unitPrice}}元/{{option.unit}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="col-flow-24" style="margin-bottom: 0px;" :visible="index==0">
+                        <hr class="col-flow-24" :visible="index!=0">
+                    </li>
+                </ul>
+            </div>
+            <div class="form-row sm col-row" :visible="@price.priceQuotes.length==0">
+                <label for="" class="form-label col-flow-4">可运货物</label>
+                <label class="form-label black-font">暂无报价</label>
+                <hr/>
+            </div>
+
+            <div class="form-row sm col-row">
+                <label class="form-label col-flow-4">优惠政策</label>
+                <label class="form-label col-flow-18 black-font">{{@price.discountId ? @price.discountName : '暂无'}}</label>
+            </div>
+            <hr/>
+            <div class="form-row sm col-row">
+                <label class="form-label col-flow-4">报价有效期</label>
+                <label class="form-label col-flow-18 black-font">{{@price.days}}天</label>
+            </div>
+            <div class="form-row sm col-row" :visible="!@isView">
+                <label class="form-label col-flow-4">审核意见</label>
+                <div class="col-flow-18">
+                    <textarea class="form-textarea" style="resize: none;height: 50px;" :duplex="@msg"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer col-row text-center">
+            <div class="col-flow-12 col-offset-left-6" :visible="@isView">
+                <a class="btn btn-blue btn-block" :click="@show = false">确定</a>
+            </div>
+            <div class="col-flow-16 col-offset-left-4" :visible="!@isView">
+                <a class="btn btn-blue col-flow-11" :click="@submit(true)">审核通过</a>
+                <a class="btn btn-red col-flow-11 fr" :click="@submit(false)">审核不通过</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-/* globals window, console require */
+/* globals window, console require $ */
 window.onerror = function () {
     console.log(arguments);
     return true;
@@ -7,14 +7,14 @@ window.onerror = function () {
 require('../../lib/style/scss/main.scss');
 // import * as avalon from 'avalon2';
 
-let avalon = require('avalon2');
+let avalon = require('avalon2'),
+    html = require('./aa.html');
+    // $ = require('jquery');
+
 require('./test.css');
 
+$('#test').html(html);
 require('../../components/datepicker/index');
-
-// require.ensure([], (require) => {
-//     console.log('3242343');
-// });
 
 require.ensure([], (require) => {
     require('../../components/datepicker2/index');

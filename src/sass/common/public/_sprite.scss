@@ -1,0 +1,10 @@
+$icon-spacing: 8px;
+$icon-layout: smart;
+$icon-sprite-dimensions: true;
+@import "icon/*.png";
+@include all-icon-sprites;
+ 
+[class^="icon-"]{
+  display: inline-block; 
+  vertical-align: middle;
+} 

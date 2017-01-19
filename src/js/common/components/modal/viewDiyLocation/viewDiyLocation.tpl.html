@@ -1,0 +1,35 @@
+<div>
+  <xmp ms-widget="{is:'cap-modal',id:'view_diy_location_wrapper_'+@$id,show:@show,classes:'modal-sm'}">
+    <span slot="header">{{@title}}</span>
+    <div slot="content">
+      <!--<div class="form-row col-row">
+        <label class="form-label text-right col-flow-6 col-offset-2">所属线路类型</label>
+        <label class="form-label col-flow-16 black-font font-12">长途路线</label>
+      </div>-->
+      <div class="form-row col-row">
+        <label class="form-label text-right col-flow-6 col-offset-2">所属区域</label>
+        <label class="form-label col-flow-16 black-font font-12">{{@addr.provinceName}} {{@addr.cityName}} {{@addr.districtName}}</label>
+      </div>
+      <div class="form-row col-row">
+        <label class="form-label text-right col-flow-6 col-offset-2">地点名称</label>
+        <label class="form-label col-flow-16 black-font font-12">{{@addr.name}}</label>
+      </div>
+      <div class="form-row col-row">
+        <label class="form-label text-right col-flow-6 col-offset-2">详细地址</label>
+        <label class="form-label col-flow-16 black-font font-12">{{@addr.address}}</label>
+      </div>
+      <div class="form-row col-row">
+        <label class="form-label text-right col-flow-6 col-offset-2">创建时间</label>
+        <label class="form-label col-flow-16 black-font font-12">{{@addr.createdDate}}</label>
+      </div>
+      <div class="form-row col-row">
+        <label class="form-label text-right col-flow-6 col-offset-2">审核状态</label>
+        <label class="form-label col-flow-16 black-font font-12">{{@addr.statusText}}</label>
+      </div>
+      <div class="form-row col-row">
+        <label class="form-label text-right col-flow-6 col-offset-2">审核意见</label>
+        <label class="form-label col-flow-16 black-font font-12">{{@addr.verifyMsg}}</label>
+      </div>
+    </div>
+  </xmp>
+</div>

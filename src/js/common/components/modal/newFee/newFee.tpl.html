@@ -1,0 +1,40 @@
+<div class="modal-mask" :visible="@show">
+  <div class="modal-container" :class="[@classes]">
+    <div class="modal-header">
+      {{@title}}
+      <span class="close" :click="@show=false">x</span>
+    </div>
+    <div class="modal-body">
+      <form :validate="@newFeeValidate">
+        <div class="form-row col-row" :class="[@errorInputs.indexOf('fee_name_'+@$id)>-1?'has-error':'']">
+          <label for="" class="form-label col-flow-5">费用项目</label>
+          <xmp ms-widget="[{is:'cap-select',id:'cap_fee_type_select_'+@$id,classes:'col-flow-19'},@feeCategory]"></xmp>
+          <input type="hidden" :attr="{id:'fee_name_'+@$id}" :rules="{required:true}" :duplex="@feeCategory.value">
+        </div>
+        <div class="form-row col-row">
+          <label for="" class="form-label col-flow-5">费用</label>
+          <div class="col-flow-19 input-group" :class="[@errorInputs.indexOf('new_fee_'+@$id)>-1?'has-error':'']">
+            <input type="text" class="form-input" :attr="{id:'new_fee_'+@$id}" :on-keypress="@floatNumberKeyPress" :rules="{required:true}" :duplex="@fee.fee">
+            <span class="input-group-icon">元</span>
+          </div>
+        </div>
+        <div class="form-row col-row">
+          <label for="" class="form-label col-flow-5">备注</label>
+          <div class="col-flow-19">
+            <input type="text" class="form-input" :duplex="@fee.feeRemark">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <div class="col-row">
+        <div class="col-flow-14">
+          <button type="button" class="btn btn-blue btn-block" data-op="confirm" :click="@confirm()">确定</button>
+        </div>
+        <div class="col-flow-10">
+          <button type="button" class="btn btn-red btn-block" data-op="cancel" :click="@show=false">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

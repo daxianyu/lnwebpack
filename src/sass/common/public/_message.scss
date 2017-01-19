@@ -1,0 +1,108 @@
+$five : 5px;
+$fivepercent:5%;
+$success:#dff0d8;
+$sucesscolor:#3c763d;
+$info:#d9edf7;
+$infocolor:#31708f;
+$waring:#fcf8e3;
+$waringcolor:#8a6d3b;
+$error:#f2dede;
+$errorcolor:#a94442;
+$hoary:#f6f6f6;
+$lightorange:#ff8500;
+
+.message{
+    left:0;
+    padding:$five*2;
+    position:fixed;
+    top:0;
+    width:$fivepercent*20;
+    z-index: 700;
+    @include animation(zoomOpacity 0.5s ease-out 0.1);
+}
+.message-out{
+    opacity:0;
+    left:0;
+    padding:$five*2;
+    position:fixed;
+    top:0;
+    width:$fivepercent*20;
+    @include animation(fadeout 0.1s ease-out);
+    @include animation-fill-mode(forwards);
+}
+.message-success{
+    background:$success;
+    color:$sucesscolor;
+}
+.message-info{
+    background:$info;
+    color:$infocolor;
+}
+.message-waring{
+    background:$waring;
+    color:$waringcolor;
+}
+.message-error{
+    background:$error;
+    color:$errorcolor;
+}
+.message-content{
+    margin:0 auto;
+    text-align:center;
+    width:$fivepercent*16;
+}
+.message-close{
+    color:black;
+    cursor:pointer;
+    font-size:16px;
+    right:$five*4;
+    top:$five*3-1;
+    position:absolute;
+}
+.none-message{
+    width:$fivepercent*20;
+    i{
+        font-size:50px;
+    }
+    .none-message-text{
+        display:inline-block;
+        margin-left:$five*2;
+        line-height:$five*5;
+    }
+}
+.content-none{
+    font-size:18px;
+    left:$fivepercent*10;
+    height:$five*22;
+    line-height:$five*8;
+    margin-left:-$five*32;
+    margin-top:-$five*7;
+    position:absolute;
+    top:$fivepercent*10;
+    width:$five*64;
+    img{
+        float:left;
+    }
+    span{
+        line-height:$five*5;
+        margin-left:$five*4;
+    }
+    a{
+        color:#fff;
+    }
+}
+
+.web-notice{
+    background:$hoary;
+    border-top:1px solid #ededed;
+    color:$lightorange;
+}
+.web-content-notice{
+    height:$five*7+1;
+    line-height:$five*7+1;
+}
+.close-notice{
+    cursor:pointer;
+    color:#c6c6c6;
+    float:right;
+}

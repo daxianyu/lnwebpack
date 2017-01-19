@@ -1,0 +1,11 @@
+<div class="modal-mask" :visible="@show">
+  <div class="modal-container modal-md">
+    <div class="modal-header">
+      {{@title}}
+      <span class="close" :click="@show=false">x</span>
+    </div>
+    <div class="modal-body">
+      <xmp ms-widget="[{is:'cap-tab-cascader',id:'modal-address-tab-cascader'},@tabCascader]"></xmp>
+    </div>
+  </div>
+</div>

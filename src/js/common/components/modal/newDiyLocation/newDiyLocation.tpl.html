@@ -1,0 +1,47 @@
+<div class="modal-mask" :visible="@show">
+  <div class="modal-container modal-sm">
+    <div class="modal-header">
+      新增自定义装卸点
+      <span class="close" :click="@show=false">x</span>
+    </div>
+    <div class="modal-body">
+        <div class="form-row col-row">
+            <label class="form-label text-center col-flow-6 ">所属区域</label>
+            <div class="col-flow-17" :visible="@isLong">
+                <xmp ms-widget="[{is:'cap-mini-cascader',id:'cascader_from_'+@$id},@locationConfig]"></xmp>
+            </div>
+        </div>
+        <div class="form-row col-row">
+            <label class="form-label text-center col-flow-6 ">地区级别</label>
+            <xmp ms-widget="[{is:'cap-select',classes:'col-flow-17'},@typeConfig]"></xmp>
+        </div>
+        <div class="form-row col-row">
+            <label class="form-label text-center col-flow-6 ">地点名称</label>
+            <div class="col-flow-17">
+                <input type="text" class="form-input" :duplex="@location.name">
+            </div>
+        </div>
+        <div class="form-row col-row">
+            <label class="form-label text-center col-flow-6 ">详细地址</label>
+            <div class="col-flow-17">
+                <input type="text" class="form-input" :duplex="@location.address">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="form-row col-row">
+            <label class="form-label text-center col-flow-6"></label>
+            <div class="col-flow-8">
+                <button class="btn btn-blue btn-block" :click="@submit">提交审核</button>
+            </div>
+        </div>
+        <div class="col-row font-8">
+            <label class="form-label text-center col-flow-6"></label>
+            <label class="form-label text-left red-font col-flow-17">
+                注：部分仓库货港口等候装卸货时间较长，物流公司可自定义地点后对其单独报价，
+            自定义地点需要提交客服审核，请耐心等待
+            </label>
+        </div>
+    </div>
+  </div>
+</div>

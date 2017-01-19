@@ -1,0 +1,33 @@
+$photo-height:100px;
+$photo-width:150px;
+
+.photo{
+  @include border-radius(4px);
+  background: #D5E7FF;
+  text-align: center;
+  height:$photo-height;
+  line-height: $photo-height;
+  width:$photo-width;
+  position:relative;
+  img{
+    position: absolute;
+    left:0;
+    top:0;
+    @include border-radius(4px);
+    height:$photo-height;
+    width:$photo-width;
+  }
+}
+
+.photo-wall{
+  @include pie-clearfix;
+  margin-bottom:10px;
+  .photo{
+    margin:10px;
+    margin-left:0px;
+    float: left;
+    &:last-child{
+      margin-right: 0px;
+    }
+  }
+}

@@ -14,6 +14,8 @@ const _ = require('lodash'),
     WebpackMd5Hash = require('webpack-md5-hash'),
     Setting = require('./directory');
 
+// require('file-loader')
+
 function getEntry (globpath) {
     let entries = {}, pathname;
     glob.sync(globpath).forEach(function (entry) {
@@ -38,16 +40,25 @@ function getLoaders () {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style', 'css'),
     }, {
+        test: /\.(png|jpg)$/,
+        loader: 'url',
+        query: {
+            limit: 8196,
+            name: 'statics/images/[name]_[hash:6].[ext]',
+        },
+    }, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css!sass'),
     }, {
+        test: /[^(index)]\.html$/,
+        loader: 'html',
+    }, {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel?presets[]=es2015'],
-        // query: {
-        //     presets: ['es2015']
-        // },
-        // loader: ExtractTextPlugin.extract('babel?presets[]=es2015')
+        loader: 'babel',
+        query: {
+            presets: ['es2015'],
+        },
     }];
 }
 
@@ -79,7 +90,7 @@ function getPlugin () {
             //     name: 'vendor',
             // }),
         ],
-        pages = getEntry('./src/pages/**/*.html');
+        pages = getEntry('./src/pages/**/index.html');
     if (isProd()) {
         defaultPlugin.push(
             new webpack.optimize.UglifyJsPlugin({
@@ -125,7 +136,7 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'eslint',
                 include: Setting.root,
-                exclude: /node_modules/,
+                exclude: /[node_modules | src\/js\/common]/,
             },
         ],
         loaders: getLoaders(),

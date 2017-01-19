@@ -1,0 +1,43 @@
+html,body{
+  height:100%;
+  background-color: $bodyBG;
+  min-width: $bodyMinWidth;
+}
+
+$panelPadding:20px 20px 90px 20px;
+.main-body{
+  margin:0px auto;
+  padding-top:22px;
+  padding:22px 40px 0px 40px;
+  width:$contentWidth;
+  @include pie-clearfix;
+  .content{
+    float: right;
+    width:900px;
+  }
+  .bread-crumb{
+    height:30px;
+    li{
+      cursor: pointer;
+      float: left;
+      font-size: 12px;
+      color:$darkBlueFont;
+      &:hover{
+        color:$blueFont; 
+      }
+      a{
+        color:inherit;
+      }
+      &.active{
+        color:$blueFont;
+      }
+      &:last-child{
+        cursor: default;
+      }
+    }
+  }
+  .panel{
+    background-color: #fff;
+    padding:$panelPadding;
+  }
+}

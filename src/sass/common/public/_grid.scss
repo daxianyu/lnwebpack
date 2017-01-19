@@ -1,0 +1,73 @@
+$col-padding:5px;
+
+/*flow layout*/
+@mixin make-col($value){
+    width: $value/24*100%
+}
+$col-prefix: col-flow;
+@for $i from 1 to 25{
+    .#{$col-prefix}-#{$i}{
+        @include make-col($i);
+        float: left;
+        position: relative;
+        min-height: 1px;
+    }
+}
+
+/*flow offset*/
+@mixin make-col-offset($value){
+    margin-right: $value/24*100%
+}
+$col-offset-prefix: col-offset;
+@for $i from 1 to 25{
+    .#{$col-offset-prefix}-#{$i}{
+        @include  make-col-offset($i);
+    }
+}
+
+/*flow left offset*/
+@mixin make-col-offset-left($value){
+    margin-left: $value/24*100%
+}
+$col-offset-left-prefix: col-offset-left;
+@for $i from 1 to 25{
+    .#{$col-offset-left-prefix}-#{$i}{
+        @include  make-col-offset-left($i);
+    }
+}
+
+.fl{
+    float:left!important;
+} 
+.fr{
+    float:right!important;
+}
+.col-fl{
+    float:left!important;
+    padding-left:$col-padding;
+    padding-right:$col-padding;
+}
+.col-fr{
+    float:right!important;
+    padding-left:$col-padding;
+    padding-right:$col-padding;
+}
+
+.col-row{
+    margin-left: -$col-padding;
+    margin-right: -$col-padding;
+    [class*="col-flow"]{ 
+        padding-left:$col-padding;
+        padding-right:$col-padding;
+    }
+    &:after{
+        display: table;
+        content: " ";
+        clear:both;
+    }
+}
+
+
+.inline{
+    display: inline-block;
+}

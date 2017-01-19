@@ -1,0 +1,38 @@
+<div class="tab-cascader-container">
+  <div class="tabs-wrapper">
+    <div :class="['tab',@currentLvl==-1?'active':'']" :css="{'width':1/(@tabs.length+1)*100+'%'}" :click="@changeCurrentLvl(-1)">{{@hotTabName}}</div>
+    <div :class="['tab',@currentLvl==lvl?'active':'']" :css="{'width':1/(@tabs.length+1)*100+'%'}" :for="(lvl,tab) in @tabs" :click="@changeCurrentLvl(lvl)" :visible="@selectedOptions.length>=lvl || @currentLvl>=lvl">{{tab}}</div>
+  </div>
+  <div class="tab-cascader-panel">
+    <div class="result-bar" :visible="@selectedOptions&&@selectedOptions.length>0">
+      <div class="tag-wrapper fl" :for="(lvl,so) in @selectedOptions">
+        <a class="btn btn-tag">{{@getItemText(so)}}<span class="icon-circle-close" :click="@deleteOption(lvl)"></span></a>
+      </div>
+    </div>
+    <div class="items-panel">
+      <div class="normal-items-panel" :visible="@currentLvl == -1">
+        <span class="col-flow-6 item" :for="op in @hotOptions" :click="@chooseHotOption(op)">{{@getItemText(op)}}</span>
+      </div>
+      <div class="normal-items-panel" :visible="@currentLvl == 0">
+        <span class="col-flow-6 item" :for="op in @options | specialFilter(false,@specialField)" :click="@chooseOption(@currentLvl,op)">{{@getItemText(op)}}</span>
+      </div>
+      <div class="normal-items-panel" :visible="@currentLvl > 0">
+        <span class="col-flow-6 item" :for="op in @selectedOptions[@currentLvl-1].children | specialFilter(false,@specialField)" :click="@chooseOption(@currentLvl,op)">{{@getItemText(op)}}</span>
+      </div>
+      <div class="special-items-panel" :visible="@currentLvl == 0&&@options | specialFilter(true,@specialField)">
+        <div :class="['special-items',@expanded?'':'less']">
+          <span class="col-flow-6 item" :for="op in @options | specialFilter(true,@specialField)" :click="@chooseOption(@currentLvl,op)">{{@getItemText(op)}}</span>
+        </div>
+        <a class="more blue-font" :visible="!@expanded" :click="@expand">更多</a>
+        <a class="more blue-font" :visible="@expanded" :click="@expand">收起</a>
+      </div>
+      <div class="special-items-panel" :visible="@currentLvl > 0&&@selectedOptions[@currentLvl-1].children | specialFilter(true,@specialField)">
+        <div :class="['special-items',@expanded?'':'less']">
+          <span class="col-flow-6 item" :for="op in @selectedOptions[@currentLvl-1].children | specialFilter(true,@specialField)" :click="@chooseOption(@currentLvl,op)">{{@getItemText(op)}}</span>
+        </div>
+        <a class="more blue-font" :visible="!@expanded" :click="@expand">更多</a>
+        <a class="more blue-font" :visible="@expanded" :click="@expand">收起</a>
+      </div>
+    </div>
+  </div>
+</div>

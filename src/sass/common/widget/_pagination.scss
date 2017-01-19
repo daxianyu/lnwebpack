@@ -1,0 +1,101 @@
+$page-border-width:1px;
+$page-border-color:#ddd;
+$page-active-color:#4389FE;
+$color:#7C8490;
+$disable-color:#CFD8DC;
+$hover-bg:#f6f6f6;
+
+.paginator{ text-align: center}
+.pagination{
+    border-radius:0;
+    display:inline-block;
+    margin:20px 0;
+    padding-left:0;
+    *display:inline;
+    *zoom:1;
+    &>li{
+        display:inline-block;
+        vertical-align: bottom; 
+        margin-left:4px;
+        &>a{
+            background:$body-bg;
+            border: $page-border-width solid $page-border-color;
+            color:$color;
+            font-size: 12px;
+            height:30px; 
+            float:left;
+            line-height:30px;
+            margin-left:-1px;
+            padding:0px 7px;
+            min-width: 30px;
+            position:relative;
+            text-decoration:none;
+            *height:30px;
+            &>span{
+                position:relative;
+                top:0px;
+            }
+            &>em{
+                position:relative;
+                top:-4px;
+            }
+            &.none-border{
+                background:none;
+                border:0;
+                cursor:default; 
+                &:hover{
+                    background:none;
+                }
+            }
+            &:hover{
+                background:$hover-bg;
+            }
+        }
+        &:first-child{
+            &>a{
+                margin-left:0;
+                @include border-radius(0);
+            }
+        }
+        &:last-child{
+            &>a{
+                @include border-radius(0);
+            }
+        }
+
+    }
+    &>.active{
+        &>a{
+            background:$page-active-color;
+            border-color:$page-active-color;
+            color:$body-bg;
+            &:hover{
+                background:$page-active-color;
+                border-color:$page-active-color;
+            }
+        }
+    }
+    &>.disabled{
+        
+        &>a{
+            color:$disable-color;
+            background:$body-bg;
+            border-color:$page-border-color;
+            cursor:not-allowed;
+            &:hover{
+                background:$body-bg;
+            }
+        }
+    }
+}
+.pagination-jump{
+    color:$color; 
+    input{
+        border:$page-border-width solid $page-border-color;
+        height:30px;
+        text-align:center;
+        width:40px;
+        color:$color;
+        font-size: 12px;
+    }
+}

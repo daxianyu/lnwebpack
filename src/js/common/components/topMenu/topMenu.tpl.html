@@ -1,0 +1,15 @@
+<ul class="top-menu">
+  <li class="menu" :for="item in @menu">
+    <a href="javascript:void(0)"  ms-attr="{href:item.url?item.url:'javascript:void(0)'}">
+      {{item.text}}
+      <span class="badge" style="margin-left: 10px;" :visible="item.text=='管理工作台'&&@todoNum">{{@todoNum}}</span>
+    </a>
+    <ul class="menu-list" :if="item.children">
+      <a href="javascript:void(0)"  ms-attr="{href:child.url?child.url:'javascript:void(0)'}" :for="child in item.children">
+        <li class="item" >
+          {{child.text}}
+        </li>
+      </a>
+    </ul>
+  </li>
+</ul>

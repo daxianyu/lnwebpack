@@ -1,0 +1,62 @@
+<div class="input-select-area" :class="[@enableEdit || @enableFilter?'':'select-only',@classes]">
+    <input :class="['input-select-input',@selectionsIsShow?'inputselect-input-selection-showing':'']" type="text"
+           ms-attr="{placeholder:@placeholder,readonly:(!@enableEdit && !@enableFilter) || @mutiLevel}"
+           ms-click="@onInputClick()" ms-blur="@onInputBlur()" ms-duplex="@filterBy"
+           ms-keyup="@onInputTextInput()"
+    />
+    <span class="input-select-carat" :class="[@selectionsIsShow?'open':'']" ms-click="@onInputClick()"></span>
+    <a href="javascript:void(0)" class="input-select-clear" ms-if="@value" ms-click="@onClear()">×</a>
+    <div class="select-selections-container" :class="@mutiLevel?'level1':''" ms-visible="@selectionsIsShow"
+         ms-mouseover="@selectionsContainerMouseup=true;" ms-mouseout="@selectionsContainerMouseup=false;">
+        <ul>
+            <li ms-for="item in @items"
+                ms-click="@onSelectionClick(item,1)"
+                :class="item.disabled?@disabledCls:''"
+                ms-visible="@filterFn(item)"
+                ms-mouseover="item.children&&item.children.length>0?@selectedItem1=item.$model:@selectedItem1={};">
+                <label>{{@getItemText(item)}}</label>
+            </li>
+            <!--<li ms-for="($index,item) in @items" ms-visible="!@enableFilter || @mutiLevel"-->
+                <!--ms-click="@onSelectionClick(item,1)"-->
+                <!--:class="[item.disabled?@disabledCls:'',@getItemValue(@selectedItem1)==@getItemValue(item)?'active':'']"-->
+                <!--ms-mouseover="item.children&&item.children.length>0?@selectedItem1=item.$model:@selectedItem1={};">-->
+                <!--<label>{{@getItemText(item)}}</label>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <div class="select-selections-container" :class="@mutiLevel?'level2':''"
+         ms-visible="@mutiLevel&&@selectionsIsShow&&@level2Items.length>0"
+         ms-mouseover="@selectionsContainerMouseup=true;" ms-mouseout="@selectionsContainerMouseup=false;">
+        <ul>
+            <li ms-for="($index,item1) in @level2Items"
+                ms-click="@onSelectionClick(item1,2)"
+                :class="[item1.disabled?@disabledCls:'',@getItemValue(@selectedItem2)==@getItemValue(item1)?'active':'']"
+                ms-mouseover="item1.children&&item1.children.length>0?@selectedItem2=item1.$model:@selectedItem2={}">
+                <label>{{@getItemText(item1)}}</label>
+            </li>
+        </ul>
+    </div>
+    <div class="select-selections-container" :class="@mutiLevel?'level3':''"
+         ms-visible="@mutiLevel&&@selectionsIsShow&&@level3Items.length>0"
+         ms-mouseover="@selectionsContainerMouseup=true;" ms-mouseout="@selectionsContainerMouseup=false;">
+        <ul>
+            <li ms-for="($index,item2) in @level3Items"
+                ms-click="@onSelectionClick(item2,3)"
+                :class="[item2.disabled?@disabledCls:'',@getItemValue(@selectedItem3)==@getItemValue(item2)?'active':'']"
+                ms-mouseover="item2.children&&item2.children.length>0?@selectedItem3=item2.$model:@selectedItem3={};">
+                <label>{{@getItemText(item2)}}</label>
+            </li>
+        </ul>
+    </div>
+    <div class="select-selections-container" :class="@mutiLevel?'level4':''"
+         ms-visible="@mutiLevel&&@selectionsIsShow&&@level4Items.length>0"
+         ms-mouseover="@selectionsContainerMouseup=true;" ms-mouseout="@selectionsContainerMouseup=false;">
+        <ul>
+            <li ms-for="($index,item3) in @level4Items"
+                :class="[item3.disabled?@disabledCls:'']"
+                ms-click="@onSelectionClick(item3,4)" :class="item3.disabled?@disabledCls:''">
+                <label>{{@getItemText(item3)}}</label>
+            </li>
+        </ul>
+    </div>
+</div>

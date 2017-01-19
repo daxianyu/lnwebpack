@@ -1,0 +1,5 @@
+<a :class="['btn', 'dropdown','btn-'+@color,@classes]" :click="@toggleMenus">{{@btnText}}
+  <ul :class="['menu-list',@top?'top':'bottom']" :visible="@show">
+    <a :class="['btn','btn-outline-'+@color]" :for="m in @menus" :click="@menuClick(m) | stop">{{m.name}}</a>
+  </ul>
+</a>

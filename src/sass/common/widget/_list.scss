@@ -1,0 +1,19 @@
+$vertical-list-line-height:20px;
+$horizontal-list-margin:15px;
+
+ul.vertical-list{
+  li{
+    line-height: $vertical-list-line-height;
+  }
+}
+
+ul.horizontal-list{
+  @include pie-clearfix;
+  li{
+    float:left;
+    margin-right:$horizontal-list-margin;
+    &:last-child{
+      margin-right: 0px;
+    }
+  }
+}

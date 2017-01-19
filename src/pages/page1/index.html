@@ -6,6 +6,7 @@
 
 </head>
 <body>
+<div id="test"></div>
 <% for (var item in webpackConfig.htmlTag) { %><script type="text/javascript" src="<%= webpackConfig.htmlTag[item] %>" defer="true"></script><% } %>
 </body>
 </html>

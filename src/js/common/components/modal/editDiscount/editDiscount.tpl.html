@@ -1,0 +1,85 @@
+<div class="modal-mask" :visible="@show">
+    <div class="modal-container" style="width: 518px;">
+        <div class="modal-header">
+            {{@isNew ? '添加优惠政策' : '修改优惠政策'}}
+            <span class="close" :click="@show=false">x</span>
+        </div>
+        <div class="modal-body">
+            <div class="form-row col-row">
+                <label class="form-label col-flow-3">名称</label>
+                <input class="form-input col-flow-18" type="text">
+            </div>
+            <ul>
+                <li>
+                    <div class="form-row col-row">
+                        <label class="form-label col-flow-3">重量</label>
+                        <div class="col-flow-4 input-group">
+                            <input type="text" class="form-input">
+                            <span class="input-group-icon">吨</span>
+                        </div>
+                        <span class="form-label col-flow-1">-</span>
+                        <div class="col-flow-4 input-group">
+                            <input type="text" class="form-input">
+                            <span class="input-group-icon">吨</span>
+                        </div>
+                        <label class="form-label col-flow-3">优惠幅度</label>
+                        <div class="col-flow-6 input-group">
+                            <input type="text" class="form-input">
+                            <span class="input-group-icon">%</span>
+                        </div>
+                        <a class="form-label red-font col-flow-2">删除</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-row col-row">
+                        <label class="form-label col-flow-3">重量</label>
+                        <div class="col-flow-4 input-group">
+                            <input type="text" class="form-input">
+                            <span class="input-group-icon">吨</span>
+                        </div>
+                        <span class="form-label col-flow-1">-</span>
+                        <div class="col-flow-4 input-group">
+                            <input type="text" class="form-input">
+                            <span class="input-group-icon">吨</span>
+                        </div>
+                        <label class="form-label col-flow-3">优惠幅度</label>
+                        <div class="col-flow-6 input-group">
+                            <input type="text" class="form-input">
+                            <span class="input-group-icon">%</span>
+                        </div>
+                        <a class="form-label red-font col-flow-2">删除</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-row col-row">
+                        <label class="form-label col-flow-3">重量</label>
+                        <div class="col-flow-4 input-group">
+                            <input type="text" class="form-input">
+                            <span class="input-group-icon">吨</span>
+                        </div>
+                        <span class="form-label col-flow-1">-</span>
+                        <div class="col-flow-4 input-group">
+                            <input type="text" class="form-input">
+                            <span class="input-group-icon">吨</span>
+                        </div>
+                        <label class="form-label col-flow-3">优惠幅度</label>
+                        <div class="col-flow-6 input-group">
+                            <input type="text" class="form-input">
+                            <span class="input-group-icon">%</span>
+                        </div>
+                        <a class="form-label red-font col-flow-2">删除</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="form-row col-row col-flow-24">
+                <a class="blue-font col-offset-3 fr">添加新的优惠项</a>
+            </div>
+        </div>
+        <div class="modal-footer col-row text-center">
+            <div class="col-flow-8 col-offset-left-8">
+                <a class="btn btn-blue btn-block col-flow-8">提交</a>
+            </div>
+            <a class="red-font col-flow-24 margin-top-20">注：实际运价，系统将根据优惠百分比四舍五入取整数值</a>
+        </div>
+    </div>
+</div>
