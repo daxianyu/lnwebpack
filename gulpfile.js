@@ -14,14 +14,14 @@ const gulp = require('gulp'),
     raw = {
         jquery: Setting.nodeModules + '/jquery/dist/jquery.min.js',
         // angular: Setting.nodeModules + '/angular/angular.min.js',
-        avalon2: Setting.nodeModules + '/avalon2/dist/avalon.js',
+        avalon: Setting.nodeModules + '/avalon2/dist/avalon.js',
         // vue: Setting.nodeModules + '/vue/dist/vue.min.js',
     },
     names = {},
     externals = {
         jquery: 'window.jquery',
         // angular: 'window.angular',
-        avalon2: 'window.avalon',
+        avalon: 'window.avalon',
         // vue: 'window.vue',
     };
     // webpackDllConfig = require('./gulp/webpack.dll.js'),
@@ -95,7 +95,7 @@ gulp.task('ws', function (done) {
 gulp.task('server', function (done) {                    // 纯server服务
     done();
     return connect.server({
-        port: 8888,
+        port: 9001,
         root: './dist',
     });
 });
