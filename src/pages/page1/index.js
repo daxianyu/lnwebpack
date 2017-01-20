@@ -9,7 +9,7 @@ require('../../lib/style/scss/main.scss');
 
 let avalon = window.avalon,
     html = require('./aa.html');
-    // $ = require('jquery');
+// $ = require('jquery');
 
 require('./test.css');
 

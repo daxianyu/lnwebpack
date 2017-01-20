@@ -126,6 +126,7 @@ function getPlugin () {
             chunks: [key, 'common'],
             excludeChunks: [],
             favicon: Setting.sourceRoot + '/images/favico.ico',
+            // minify: true,
         };
         defaultPlugin.push(new HtmlWebpackPlugin(conf));
     });
@@ -177,8 +178,18 @@ module.exports = {
         cache: true,                                // 开启eslint的cache，cache存在node_modules/.cache目录里
     },
     resolve: {
+        root: [
+            Setting.root,
+        ],
         extensions: ['', '.ts', '.js'],
     },
     plugins: getPlugin(),
     postcss: getPostCss(),
+    htmlLoader: {
+        root: Setting.root,
+    },
+    // rule: {
+    //     resource: true,
+    // },
+    // context: Setting.root,
 };
