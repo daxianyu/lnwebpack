@@ -7,6 +7,8 @@ const _ = require('lodash'),
     path = require('path'),
     webpack = require('webpack'),
     glob = require('glob'),
+    postcssSprites = require('postcss-sprites'),
+    SpritesmithPlugin = require('webpack-spritesmith'),
     entries = getEntry('./src/pages/**/index.js'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
@@ -40,7 +42,7 @@ function getLoaders () {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style', 'css'),
     }, {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|jpeg|ico)$/,
         loader: 'url',
         query: {
             limit: 8196,
@@ -77,13 +79,29 @@ function getPlugin () {
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common',
                 filename: 'statics/js/common_[chunkhash:6].js',
-                minChunks: 2,
+                minChunks: 3,
             }),
             new ScriptExtHtmlWebpackPlugin({
                 defaultAttribute: 'defer',
             }),
             new ExtractTextPlugin('statics/css/[name]_[contenthash:6].css'),
             new WebpackMd5Hash(),
+            new SpritesmithPlugin({
+                src: {
+                    cwd: Setting.sourceRoot + '/images/icon/',
+                    glob: '*.png',
+                },
+                target: {
+                    image: Setting.statics + '/images/sprite_[hash:6].png',
+                    css: Setting.sourceRoot + '/sass/_sprite.scss',
+                },
+                apiOptions: {
+                    cssImageRef: Setting.sourceRoot + '/sass/common/base.scss',
+                },
+                spritesmithOptions: {
+                    algorithm: 'top-down',
+                },
+            }),
             // new webpack.DllReferencePlugin({
             //     context: Setting.root,
             //     manifest: require(Setting.root + '/manifest.json'),
@@ -107,6 +125,7 @@ function getPlugin () {
             inject: 'body',
             chunks: [key, 'common'],
             excludeChunks: [],
+            favicon: Setting.sourceRoot + '/images/favico.ico',
         };
         defaultPlugin.push(new HtmlWebpackPlugin(conf));
     });
@@ -114,7 +133,17 @@ function getPlugin () {
 }
 
 function getPostCss () {
-    return '';
+    return function () {
+        return [postcssSprites({
+            stylesheetPath: Setting.sourceRoot + '/images/icon',
+            spritePath: Setting.statics + '/images/sprite.png',
+            retina: true,
+            padding: 3,
+            // filterBy: function (image) {     排除不需要的
+            //     return /\./gi.test(image.url);
+            // },
+        })];
+    };
 }
 
 module.exports = {

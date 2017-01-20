@@ -1,4 +1,4 @@
-/* globals require, rm, cp, mkdir, JSON */
+/* globals require, rm, mkdir, JSON */
 require('shelljs/global'); // 引入shell命令
 
 const gulp = require('gulp'),
@@ -41,7 +41,6 @@ gulp.task('webpack', function (done) {                   // 使用原生 webpack
         externals: externals,
         htmlTag: names,
     }), function (err, stats) {
-        cp('-r', './statics/js/', Setting.statics);
         if (err) {
             throw new gutil.PluginError('webpack', err);
         }

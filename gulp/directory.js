@@ -5,6 +5,7 @@ var path = require('path'),
     dest = path.resolve(programRoot, 'dist'),
     modulesRoot = path.resolve(programRoot, 'dist/modules'),
     staticsRoot = path.resolve(programRoot, 'dist/statics'),
+    sourceRoot = path.resolve(programRoot, 'src/'),
     nodeModule = path.resolve(programRoot, 'node_modules');
 
 module.exports = {
@@ -12,5 +13,6 @@ module.exports = {
     dest: dest,
     modules: modulesRoot,
     statics: staticsRoot,
+    sourceRoot: sourceRoot,
     nodeModules: nodeModule,
 };

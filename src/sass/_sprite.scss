@@ -1,0 +1,354 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$angle-down-name: 'angle-down';
+$angle-down-x: 0px;
+$angle-down-y: 0px;
+$angle-down-offset-x: 0px;
+$angle-down-offset-y: 0px;
+$angle-down-width: 12px;
+$angle-down-height: 8px;
+$angle-down-total-width: 33px;
+$angle-down-total-height: 398px;
+$angle-down-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$angle-down: (0px, 0px, 0px, 0px, 12px, 8px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'angle-down', );
+$yellow-bus-name: 'yellow-bus';
+$yellow-bus-x: 0px;
+$yellow-bus-y: 8px;
+$yellow-bus-offset-x: 0px;
+$yellow-bus-offset-y: -8px;
+$yellow-bus-width: 8px;
+$yellow-bus-height: 10px;
+$yellow-bus-total-width: 33px;
+$yellow-bus-total-height: 398px;
+$yellow-bus-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$yellow-bus: (0px, 8px, 0px, -8px, 8px, 10px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'yellow-bus', );
+$blue-bus-name: 'blue-bus';
+$blue-bus-x: 0px;
+$blue-bus-y: 18px;
+$blue-bus-offset-x: 0px;
+$blue-bus-offset-y: -18px;
+$blue-bus-width: 8px;
+$blue-bus-height: 10px;
+$blue-bus-total-width: 33px;
+$blue-bus-total-height: 398px;
+$blue-bus-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$blue-bus: (0px, 18px, 0px, -18px, 8px, 10px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'blue-bus', );
+$arrow-name: 'arrow';
+$arrow-x: 0px;
+$arrow-y: 28px;
+$arrow-offset-x: 0px;
+$arrow-offset-y: -28px;
+$arrow-width: 33px;
+$arrow-height: 10px;
+$arrow-total-width: 33px;
+$arrow-total-height: 398px;
+$arrow-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$arrow: (0px, 28px, 0px, -28px, 33px, 10px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'arrow', );
+$male-name: 'male';
+$male-x: 0px;
+$male-y: 38px;
+$male-offset-x: 0px;
+$male-offset-y: -38px;
+$male-width: 6px;
+$male-height: 11px;
+$male-total-width: 33px;
+$male-total-height: 398px;
+$male-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$male: (0px, 38px, 0px, -38px, 6px, 11px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'male', );
+$switch-name: 'switch';
+$switch-x: 0px;
+$switch-y: 49px;
+$switch-offset-x: 0px;
+$switch-offset-y: -49px;
+$switch-width: 20px;
+$switch-height: 11px;
+$switch-total-width: 33px;
+$switch-total-height: 398px;
+$switch-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$switch: (0px, 49px, 0px, -49px, 20px, 11px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'switch', );
+$circle-close-name: 'circle-close';
+$circle-close-x: 0px;
+$circle-close-y: 60px;
+$circle-close-offset-x: 0px;
+$circle-close-offset-y: -60px;
+$circle-close-width: 12px;
+$circle-close-height: 12px;
+$circle-close-total-width: 33px;
+$circle-close-total-height: 398px;
+$circle-close-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$circle-close: (0px, 60px, 0px, -60px, 12px, 12px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'circle-close', );
+$angle-left-name: 'angle-left';
+$angle-left-x: 0px;
+$angle-left-y: 72px;
+$angle-left-offset-x: 0px;
+$angle-left-offset-y: -72px;
+$angle-left-width: 8px;
+$angle-left-height: 12px;
+$angle-left-total-width: 33px;
+$angle-left-total-height: 398px;
+$angle-left-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$angle-left: (0px, 72px, 0px, -72px, 8px, 12px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'angle-left', );
+$transport-name: 'transport';
+$transport-x: 0px;
+$transport-y: 84px;
+$transport-offset-x: 0px;
+$transport-offset-y: -84px;
+$transport-width: 17px;
+$transport-height: 13px;
+$transport-total-width: 33px;
+$transport-total-height: 398px;
+$transport-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$transport: (0px, 84px, 0px, -84px, 17px, 13px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'transport', );
+$angle-right-name: 'angle-right';
+$angle-right-x: 0px;
+$angle-right-y: 97px;
+$angle-right-offset-x: 0px;
+$angle-right-offset-y: -97px;
+$angle-right-width: 8px;
+$angle-right-height: 13px;
+$angle-right-total-width: 33px;
+$angle-right-total-height: 398px;
+$angle-right-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$angle-right: (0px, 97px, 0px, -97px, 8px, 13px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'angle-right', );
+$info-name: 'info';
+$info-x: 0px;
+$info-y: 110px;
+$info-offset-x: 0px;
+$info-offset-y: -110px;
+$info-width: 15px;
+$info-height: 15px;
+$info-total-width: 33px;
+$info-total-height: 398px;
+$info-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$info: (0px, 110px, 0px, -110px, 15px, 15px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'info', );
+$package-name: 'package';
+$package-x: 0px;
+$package-y: 125px;
+$package-offset-x: 0px;
+$package-offset-y: -125px;
+$package-width: 17px;
+$package-height: 15px;
+$package-total-width: 33px;
+$package-total-height: 398px;
+$package-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$package: (0px, 125px, 0px, -125px, 17px, 15px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'package', );
+$checkbox-checked-name: 'checkbox-checked';
+$checkbox-checked-x: 0px;
+$checkbox-checked-y: 140px;
+$checkbox-checked-offset-x: 0px;
+$checkbox-checked-offset-y: -140px;
+$checkbox-checked-width: 16px;
+$checkbox-checked-height: 16px;
+$checkbox-checked-total-width: 33px;
+$checkbox-checked-total-height: 398px;
+$checkbox-checked-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$checkbox-checked: (0px, 140px, 0px, -140px, 16px, 16px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'checkbox-checked', );
+$credit-name: 'credit';
+$credit-x: 0px;
+$credit-y: 156px;
+$credit-offset-x: 0px;
+$credit-offset-y: -156px;
+$credit-width: 16px;
+$credit-height: 17px;
+$credit-total-width: 33px;
+$credit-total-height: 398px;
+$credit-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$credit: (0px, 156px, 0px, -156px, 16px, 17px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'credit', );
+$search-name: 'search';
+$search-x: 0px;
+$search-y: 173px;
+$search-offset-x: 0px;
+$search-offset-y: -173px;
+$search-width: 17px;
+$search-height: 17px;
+$search-total-width: 33px;
+$search-total-height: 398px;
+$search-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$search: (0px, 173px, 0px, -173px, 17px, 17px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'search', );
+$vehicle-name: 'vehicle';
+$vehicle-x: 0px;
+$vehicle-y: 190px;
+$vehicle-offset-x: 0px;
+$vehicle-offset-y: -190px;
+$vehicle-width: 14px;
+$vehicle-height: 17px;
+$vehicle-total-width: 33px;
+$vehicle-total-height: 398px;
+$vehicle-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$vehicle: (0px, 190px, 0px, -190px, 14px, 17px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'vehicle', );
+$img-name: 'img';
+$img-x: 0px;
+$img-y: 207px;
+$img-offset-x: 0px;
+$img-offset-y: -207px;
+$img-width: 23px;
+$img-height: 18px;
+$img-total-width: 33px;
+$img-total-height: 398px;
+$img-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$img: (0px, 207px, 0px, -207px, 23px, 18px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'img', );
+$insure-name: 'insure';
+$insure-x: 0px;
+$insure-y: 225px;
+$insure-offset-x: 0px;
+$insure-offset-y: -225px;
+$insure-width: 15px;
+$insure-height: 18px;
+$insure-total-width: 33px;
+$insure-total-height: 398px;
+$insure-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$insure: (0px, 225px, 0px, -225px, 15px, 18px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'insure', );
+$calendar-name: 'calendar';
+$calendar-x: 0px;
+$calendar-y: 243px;
+$calendar-offset-x: 0px;
+$calendar-offset-y: -243px;
+$calendar-width: 16px;
+$calendar-height: 18px;
+$calendar-total-width: 33px;
+$calendar-total-height: 398px;
+$calendar-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$calendar: (0px, 243px, 0px, -243px, 16px, 18px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'calendar', );
+$pic-name: 'pic';
+$pic-x: 0px;
+$pic-y: 261px;
+$pic-offset-x: 0px;
+$pic-offset-y: -261px;
+$pic-width: 23px;
+$pic-height: 18px;
+$pic-total-width: 33px;
+$pic-total-height: 398px;
+$pic-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$pic: (0px, 261px, 0px, -261px, 23px, 18px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'pic', );
+$work-order-name: 'workOrder';
+$work-order-x: 0px;
+$work-order-y: 279px;
+$work-order-offset-x: 0px;
+$work-order-offset-y: -279px;
+$work-order-width: 16px;
+$work-order-height: 19px;
+$work-order-total-width: 33px;
+$work-order-total-height: 398px;
+$work-order-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$work-order: (0px, 279px, 0px, -279px, 16px, 19px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'workOrder', );
+$members-name: 'members';
+$members-x: 0px;
+$members-y: 298px;
+$members-offset-x: 0px;
+$members-offset-y: -298px;
+$members-width: 16px;
+$members-height: 21px;
+$members-total-width: 33px;
+$members-total-height: 398px;
+$members-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$members: (0px, 298px, 0px, -298px, 16px, 21px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'members', );
+$tie-name: 'tie';
+$tie-x: 0px;
+$tie-y: 319px;
+$tie-offset-x: 0px;
+$tie-offset-y: -319px;
+$tie-width: 9px;
+$tie-height: 22px;
+$tie-total-width: 33px;
+$tie-total-height: 398px;
+$tie-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$tie: (0px, 319px, 0px, -319px, 9px, 22px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'tie', );
+$toast-success-name: 'toast-success';
+$toast-success-x: 0px;
+$toast-success-y: 341px;
+$toast-success-offset-x: 0px;
+$toast-success-offset-y: -341px;
+$toast-success-width: 28px;
+$toast-success-height: 28px;
+$toast-success-total-width: 33px;
+$toast-success-total-height: 398px;
+$toast-success-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$toast-success: (0px, 341px, 0px, -341px, 28px, 28px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'toast-success', );
+$toast-error-name: 'toast-error';
+$toast-error-x: 0px;
+$toast-error-y: 369px;
+$toast-error-offset-x: 0px;
+$toast-error-offset-y: -369px;
+$toast-error-width: 28px;
+$toast-error-height: 29px;
+$toast-error-total-width: 33px;
+$toast-error-total-height: 398px;
+$toast-error-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$toast-error: (0px, 369px, 0px, -369px, 28px, 29px, 33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', 'toast-error', );
+$spritesheet-width: 33px;
+$spritesheet-height: 398px;
+$spritesheet-image: '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss';
+$spritesheet-sprites: ($angle-down, $yellow-bus, $blue-bus, $arrow, $male, $switch, $circle-close, $angle-left, $transport, $angle-right, $info, $package, $checkbox-checked, $credit, $search, $vehicle, $img, $insure, $calendar, $pic, $work-order, $members, $tie, $toast-success, $toast-error, );
+$spritesheet: (33px, 398px, '/Users/tangjianfeng/learning/lnwebpack/src/sass/common/base.scss', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
