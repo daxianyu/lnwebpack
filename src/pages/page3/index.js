@@ -3,4 +3,6 @@ require('./main.css');
 // import 'main.css';
 require('./main2.css');
 
-require('jquery');
+window.jquery = window.jQuery;
+
+require('../../../src/js/lib/glDatePicker');
