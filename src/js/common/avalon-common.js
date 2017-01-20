@@ -98,33 +98,31 @@ module.exports =  {
         //     path: "/"
         // });
         /* @cookie comment */
-        // document.cookie ='Security-Token=%7B%22loginName%22%3A%22captain1000004%22%2C%22roles%22%3A%22owner%22%2C%22system%22%3A%22captain%22%2C%22ticket%22%3A%22Ec7QySBlWbB5nLf9%252F%252FkEyOZEwegI6hrs11lEEBabvkmrdFpmuoB146vHvQ58YCiLukMHWjNvsccPxxYR9GoRBQ%253D%253D%22%7D'
+        document.cookie ='Security-Token=%7B%22loginName%22%3A%22captain1000004%22%2C%22roles%22%3A%22owner%22%2C%22system%22%3A%22captain%22%2C%22ticket%22%3A%22Ec7QySBlWbB5nLf9%252F%252FkEyOZEwegI6hrs11lEEBabvkmrdFpmuoB146vHvQ58YCiLukMHWjNvsccPxxYR9GoRBQ%253D%253D%22%7D'
         // /*  */
-        // var securityToken = $.cookie("Security-Token");
-        // if (securityToken == null) {
-        //     securityToken = "";
-        // }
-        // if (securityToken == "") {
-        //     //跳转登录页
-        //     location.href='/logout';
-        //     // location.href='http://dev.captain.useonline.cn/login';
-        // } else {
-        //     vm.userInfo = JSON.parse(securityToken);
-        //     if(!vm.userInfo.roles){
-        //         ui.alert('系统错误','系统升级，请重新登录!',function() {
-        //             location.href='/logout';
-        //         });
-        //     }
-        //     else if(vm.userInfo.roles!='logistic'&&vm.userInfo.roles!='owner'&&vm.userInfo.roles!='platform'){
-        //         ui.alert('权限错误','当前用户角色暂未开放管理控制台!');
-        //     }else{
-        //         vm.getTodoCount();
-        //         vm.getUserInfo();
-        //         setTimeout(function(){
-        //             vm.readyLoad.call(vm);
-        //         },0);
-        //     }
-        // }
+        var securityToken = $.cookie("Security-Token");
+        if (securityToken == null) {
+            securityToken = "";
+        }
+        if (securityToken == "") {
+            //跳转登录页
+            location.href='/logout';
+            // location.href='http://dev.captain.useonline.cn/login';
+        } else {
+            vm.userInfo = JSON.parse(securityToken);
+            if(!vm.userInfo.roles){
+                ui.alert('系统错误','系统升级，请重新登录!',function() {
+                    location.href='/logout';
+                });
+            }
+            else if(vm.userInfo.roles!='logistic'&&vm.userInfo.roles!='owner'&&vm.userInfo.roles!='platform'){
+                ui.alert('权限错误','当前用户角色暂未开放管理控制台!');
+            }else{
+                setTimeout(function(){
+                    vm.readyLoad.call(vm);
+                },0);
+            }
+        }
 
         vm.readyLoad.call(vm);
 

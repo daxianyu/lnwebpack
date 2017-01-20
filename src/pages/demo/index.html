@@ -12,8 +12,8 @@
 
 <body :controller="app" class="ms-controller">
 <xmp ms-widget="{is:'cap-header',id:'header'}"></xmp>
-<xmp ms-widget="[{is:'cap-edit-route-modal',id:'new_route_modal'},@newRouteModal]"></xmp>
-<xmp ms-widget="[{is:'cap-address-pick-modal',id:'address-pick-model-112'},@addressModal]"></xmp>
+<!--<xmp ms-widget="[{is:'cap-edit-route-modal',id:'new_route_modal'},@newRouteModal]"></xmp>-->
+<!--<xmp ms-widget="[{is:'cap-address-pick-modal',id:'address-pick-model-112'},@addressModal]"></xmp>-->
 <div class="main-body">
 	<xmp ms-widget="{is:'cap-menu',id:'menu',current:'todo'}"></xmp>
 	<div class="content">
@@ -76,7 +76,7 @@
 						  <i class="icon-calendar"></i>
 						</span>
 				</div>
-				<xmp ms-widget="{is:'cap-date',id:'date',classes:'col-flow-8'}"></xmp>
+				<!--<xmp ms-widget="{is:'cap-date',id:'date',classes:'col-flow-8'}"></xmp>-->
 			</div>
 			<div class="form-row sm col-row">
 				<div class="col-flow-8 input-group">
@@ -86,7 +86,7 @@
 						</span>
 				</div>
 				<xmp ms-widget="[{is:'cap-select',id:'cap_edit_route_select_'+@$id,classes:'col-flow-8 sm'},@productSelectConfig]"></xmp>
-				<xmp ms-widget="{is:'cap-date',id:'date1',classes:'col-flow-8'}"></xmp>
+				<!--<xmp ms-widget="{is:'cap-date',id:'date1',classes:'col-flow-8'}"></xmp>-->
 			</div>
 			<a class="btn btn-red">asdfd</a>
 			<a class="btn btn-outline-red">asdfd</a>
@@ -235,18 +235,18 @@
 			<div class="margin-top-20">
 				<div class="photo">
 					<i class="icon-img"></i>
-					<img src="/static_web/images/logo.png" alt="">
+					<img src="/src/images/logo.png" alt="">
 				</div>
 			</div>
 			div
 			<div class="photo-wall">
 				<div class="photo">
 					<i class="icon-img"></i>
-					<img src="/static_web/images/logo.png" alt="">
+					<img src="/src/images/logo.png" alt="">
 				</div>
 				<div class="photo">
 					<i class="icon-img"></i>
-					<img src="/static_web/images/logo.png" alt="">
+					<img src="/src/images/logo.png" alt="">
 				</div>
 				<div class="photo">
 					<i class="icon-img"></i>
@@ -263,11 +263,11 @@
 						</div>
 						<div class="photo">
 							<i class="icon-img"></i>
-							<img src="/static_web/images/logo.png" alt="">
+							<img src="/src/images/logo.png" alt="">
 						</div>
 						<div class="photo">
 							<i class="icon-img"></i>
-							<img src="/static_web/images/logo.png" alt="">
+							<img src="/src/images/logo.png" alt="">
 						</div>
 						<div class="photo">
 							<i class="icon-img"></i>
@@ -275,14 +275,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-row">
-				<div class="col-flow-16">
-					<xmp ms-widget="[{is:'cap-tab-cascader',id:'cap-tab-cascader_1'},@tabCascader]"></xmp>
-				</div>
-			</div>
-			<div class="form-row col-row">
-				<button class="btn btn-outline-blue" :click="@addressModal.show=true">+添加起运点</button>
-			</div>
+			<!--<div class="col-row">-->
+				<!--<div class="col-flow-16">-->
+					<!--<xmp ms-widget="[{is:'cap-tab-cascader',id:'cap-tab-cascader_1'},@tabCascader]"></xmp>-->
+				<!--</div>-->
+			<!--</div>-->
+			<!--<div class="form-row col-row">-->
+				<!--<button class="btn btn-outline-blue" :click="@addressModal.show=true">+添加起运点</button>-->
+			<!--</div>-->
 		</div>
 	</div>
 </div>
