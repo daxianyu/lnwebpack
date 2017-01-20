@@ -1,4 +1,4 @@
-let tpl = require('./btnDropdown.tpl.html');
+let tpl = require('./date.tpl.html');
 require('../../../lib/glDatePicker');
 avalon.component('cap-date', {
     template: tpl,

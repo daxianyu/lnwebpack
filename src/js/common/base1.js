@@ -17,7 +17,7 @@ let services = require('./services'),
 require('./avalon-filter');
 require('./avalon-validators');
 require('./components/component');
-// require('./directives/directives');
+require('./directives/directives');
 
 window.Promise = Promise;
 

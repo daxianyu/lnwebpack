@@ -1,4 +1,1 @@
-define([
-    'common/directives/filePicker/filePicker',
-],function(){
-});
+require('../../common/directives/filePicker/filePicker');
