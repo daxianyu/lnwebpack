@@ -11,11 +11,281 @@
 </head>
 
 <body :controller="app" class="ms-controller">
-	<div>
-		HelloWorld {{ @name }}
+<xmp ms-widget="{is:'cap-header',id:'header'}"></xmp>
+<xmp ms-widget="[{is:'cap-edit-route-modal',id:'new_route_modal'},@newRouteModal]"></xmp>
+<xmp ms-widget="[{is:'cap-address-pick-modal',id:'address-pick-model-112'},@addressModal]"></xmp>
+<div class="main-body">
+	<xmp ms-widget="{is:'cap-menu',id:'menu',current:'todo'}"></xmp>
+	<div class="content">
+		<ul class="bread-crumb">
+			<li class="active">待办事项</li>
+		</ul>
+		<div class="panel">
+			<div>
+				<span class="round-blue-bg-text">吨</span>
+			</div>
+
+			<div class="form-row col-row">
+				<label for="" class="form-label col-flow-4">是电风：</label>
+				<div class="col-flow-7">
+					<input type="text" class="form-input" placeholder="sadff">
+				</div>
+				<div class="col-flow-4">
+					<button class="btn btn-blue btn-block">呵呵</button>
+				</div>
+				<div class="col-flow-8 input-group">
+					<input type="text" class="form-input">
+					<span class="input-group-btn">
+						  <button class="btn btn-blue">搜索</button>
+						</span>
+				</div>
+			</div>
+			<div class="form-row col-row">
+				<label for="" class="form-label col-flow-4">form checkbox：</label>
+				<span :class="['form-checkbox','checkbox',@checked?'checked':'']" :click="@checked = !@checked"></span>
+			</div>
+			<div style="line-height: 50px">
+				<label for="">line-height control</label>
+				<span :class="['checkbox',@checked?'checked':'']" :click="@checked = !@checked"></span>
+			</div>
+			<div class="form-row sm col-row">
+				<label for="" class="form-label col-flow-4">是电风：</label>
+				<div class="col-flow-7">
+					<input type="text" class="form-input" placeholder="sadff">
+				</div>
+				<div class="col-flow-4">
+					<button class="btn btn-blue btn-block">呵呵</button>
+				</div>
+				<div class="col-flow-8 input-group">
+					<input type="text" class="form-input">
+					<span class="input-group-btn">
+						  <button class="btn btn-sm btn-blue">搜索</button>
+						</span>
+				</div>
+			</div>
+			<div class="form-row col-row">
+				<div class="col-flow-8 input-group">
+					<input type="text" class="form-input">
+					<span class="input-group-icon">
+						  元
+						</span>
+				</div>
+				<div class="col-flow-8 input-group">
+					<input type="text" class="form-input">
+					<span class="input-group-icon">
+						  <i class="icon-calendar"></i>
+						</span>
+				</div>
+				<xmp ms-widget="{is:'cap-date',id:'date',classes:'col-flow-8'}"></xmp>
+			</div>
+			<div class="form-row sm col-row">
+				<div class="col-flow-8 input-group">
+					<input type="text" class="form-input">
+					<span class="input-group-icon">
+						  元
+						</span>
+				</div>
+				<xmp ms-widget="[{is:'cap-select',id:'cap_edit_route_select_'+@$id,classes:'col-flow-8 sm'},@productSelectConfig]"></xmp>
+				<xmp ms-widget="{is:'cap-date',id:'date1',classes:'col-flow-8'}"></xmp>
+			</div>
+			<a class="btn btn-red">asdfd</a>
+			<a class="btn btn-outline-red">asdfd</a>
+			<button class="btn btn-blue" :click="@confirm">点我confirm</button>
+			<button class="btn btn-outline-blue" :click="@newRouteModal.show=true">新增线路</button>
+			<button class="btn btn-yellow" :file="@file">点我选文件</button>
+			<button class="btn btn-outline-yellow">asdfd</button>
+			<button class="btn btn-tag">asdfd <span class="icon-circle-close"></span></button>
+			<button class="btn btn-blue dropdown">上拉菜单
+				<div class="menu-list top">
+					<a class="btn btn-outline-blue">菜单1</a>
+					<a class="btn btn-outline-blue">菜单2</a>
+				</div>
+			</button>
+			<button class="btn btn-blue dropdown" :click="@showDropdown = !@showDropdown">下拉菜单
+				<div class="menu-list bottom" :visible="@showDropdown">
+					<a class="btn btn-outline-blue" :for="d in @drops">{{d}}</a>
+				</div>
+			</button>
+			<xmp ms-widget="[{is:'cap-btn-dropdown',id:'cap-btn-drop-1'},@btnDropdown]"></xmp>
+			<div class="form-row margin-top-20">
+				<label for="" class="form-label col-flow-4">可运货物</label>
+				<div class="col-flow-12">
+					<xmp ms-widget="[{is:'cap-tag-picker',id:'tag-picker-1'},@tagPicker]"></xmp>
+				</div>
+			</div>
+			<xmp ms-widget="[{is:'cap-tab',id:'tab'},@tab]"></xmp>
+			<div class="statistic-wall">
+				<p>待办事项</p>
+				<div class="wall">
+					<div class="statistic">
+						<div class="data">21</div>
+						<div class="name">带派车</div>
+					</div>
+					<div class="statistic">
+						<div class="data">21</div>
+						<div class="name">带派车</div>
+					</div>
+					<div class="statistic">
+						<div class="data">21</div>
+						<div class="name">带派车</div>
+					</div>
+					<div class="statistic">
+						<div class="data">21</div>
+						<div class="name">带派车</div>
+					</div>
+					<div class="statistic">
+						<div class="data">21</div>
+						<div class="name">带派车</div>
+					</div>
+				</div>
+			</div>
+			<div class="paginator" id="pagination"></div>
+			<div class="overview-bar">
+				<div class="col-flow-6 item">
+					<span class="gray-font">运单号 </span>
+					<span class="blue-font">CSasdf21344dsf</span>
+				</div>
+				<div class="col-flow-6 item">
+					<span class="gray-font">运单号 </span>
+					<span class="blue-font">CSasdf21344dsf</span>
+				</div>
+				<div class="col-flow-12 item">
+					<span class="gray-font">运单号 </span>
+					<span class="blue-font">CSasdf21344dsf</span>
+					<div class="fr">
+						<span class="gray-font">运单单价 </span>
+						<span class="blue-font"> 70元/吨</span>
+					</div>
+				</div>
+			</div>
+			<div class="margin-top-10">
+				<table class="table cell-bordered thead-default">
+					<tr>
+						<th>标题1</th>
+						<th>标题2</th>
+						<th>标题3</th>
+						<th><xmp ms-widget="[{is:'cap-select',id:'cap_edit_route_select_1',classes:'col-flow-8 sm'},@productSelectConfig]"></xmp></th>
+					</tr>
+					<tr>
+						<td>内容1</td>
+						<td>内容2</td>
+						<td>内容3</td>
+						<td>内容4</td>
+					</tr>
+				</table>
+				<table class="table table-lg cell-bordered thead-default">
+					<tr>
+						<th>标题1</th>
+						<th>标题2</th>
+						<th>标题3</th>
+						<th><xmp ms-widget="[{is:'cap-select',id:'cap_edit_route_select_12',classes:'col-flow-8 sm'},@productSelectConfig]"></xmp></th>
+					</tr>
+					<tr>
+						<td>
+							<ul class="vertical-list">
+								<li>的所发生的</li>
+								<li>阿斯蒂芬</li>
+								<li>斯蒂芬</li>
+								<li>阿斯蒂芬</li>
+							</ul>
+						</td>
+						<td>内容2</td>
+						<td>内容3</td>
+						<td>内容4</td>
+					</tr>
+				</table>
+				<table class="table table-lg tr-bordered thead-default">
+					<tr>
+						<th>标题1</th>
+						<th>标题2</th>
+						<th>标题3</th>
+						<th>标题4</th>
+					</tr>
+					<tr>
+						<td>
+							<ul class="list">
+								<li>的所发生的</li>
+								<li>阿斯蒂芬</li>
+								<li>斯蒂芬</li>
+								<li>阿斯蒂芬</li>
+							</ul>
+						</td>
+						<td>内容2</td>
+						<td>内容3</td>
+						<td>内容4</td>
+					</tr>
+				</table>
+				<table class="table table-hover table-clickable tr-bordered thead-borderless">
+					<thead>
+					<tr>
+						<th>标题1</th>
+						<th>标题2</th>
+						<th>标题3</th>
+						<th>标题4</th>
+					</tr>
+					</thead>
+					<tr>
+						<td>内容1</td>
+						<td>内容2</td>
+						<td>内容3</td>
+						<td>内容4</td>
+					</tr>
+				</table>
+			</div>
+			<div class="margin-top-20">
+				<div class="photo">
+					<i class="icon-img"></i>
+					<img src="/static_web/images/logo.png" alt="">
+				</div>
+			</div>
+			div
+			<div class="photo-wall">
+				<div class="photo">
+					<i class="icon-img"></i>
+					<img src="/static_web/images/logo.png" alt="">
+				</div>
+				<div class="photo">
+					<i class="icon-img"></i>
+					<img src="/static_web/images/logo.png" alt="">
+				</div>
+				<div class="photo">
+					<i class="icon-img"></i>
+				</div>
+			</div>
+			<div class="col-row">
+				<div class="col-fl">
+					<div class="photo-wall">
+						<div class="col-row">
+							<label class="gray-font font-14 col-fl form-label">出库信息</label>
+							<div class="col-flow-7 col-fr">
+								<button class="btn btn-blue btn-block">添加实际出库重量</button>
+							</div>
+						</div>
+						<div class="photo">
+							<i class="icon-img"></i>
+							<img src="/static_web/images/logo.png" alt="">
+						</div>
+						<div class="photo">
+							<i class="icon-img"></i>
+							<img src="/static_web/images/logo.png" alt="">
+						</div>
+						<div class="photo">
+							<i class="icon-img"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-row">
+				<div class="col-flow-16">
+					<xmp ms-widget="[{is:'cap-tab-cascader',id:'cap-tab-cascader_1'},@tabCascader]"></xmp>
+				</div>
+			</div>
+			<div class="form-row col-row">
+				<button class="btn btn-outline-blue" :click="@addressModal.show=true">+添加起运点</button>
+			</div>
+		</div>
 	</div>
-	<xmp ms-widget="{is:'cap-header',id:'header'}"></xmp>
-	<xmp ms-widget="[{is:'cap-tab',id:'tab'},@tab]"></xmp>
+</div>
 
 <% for (var item in webpackConfig.htmlTag) { %><script type="text/javascript" src="<%= webpackConfig.htmlTag[item] %>" defer="true"></script><% } %>
 </body>

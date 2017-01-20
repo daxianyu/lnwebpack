@@ -2,6 +2,7 @@ define([
     'jquery',
     'lib/text!./modal.tpl.html',
 ], function ($, tpl) {
+
     avalon.component('cap-modal', {
         template: tpl,
         defaults: {
