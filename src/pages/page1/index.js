@@ -7,7 +7,7 @@ window.onerror = function () {
 require('../../lib/style/scss/main.scss');
 // import * as avalon from 'avalon2';
 
-let avalon = require('avalon2'),
+let avalon = window.avalon,
     html = require('./aa.html');
     // $ = require('jquery');
 
