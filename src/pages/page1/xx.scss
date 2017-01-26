@@ -1,3 +1,183 @@
-#test{
-  display: none;
+$navigator-height: 60px;
+$angle-width: 24px;
+$main-border-color: #D0DCE6;
+$main-color: #9b2324;
+$main-border: 1px $main-border-color solid;
+$fs-md: 16px;
+$fs-sm: 14px;
+$main-spacing: 15px;
+$content-padding: 20px 29px 20px 46px;
+$main-input-radius: 4px;
+$form-height: 35px;
+$input-line-height: 17px;
+$table-like-head-padding: 9px 21px;
+$table-like-padding: 15px 21px;
+
+$clr1: #333333;
+$clr2: #999999;
+$clr3: #5c595a;
+
+$fc1: $clr1;
+$fc2: $clr2;
+$fc-after-input: $clr3;
+
+*{
+  box-sizing: border-box;
 }
+
+body{
+  color: $fc1;
+  font-family: "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.row{
+  position: relative;
+  margin-right: - $main-spacing;
+}
+
+.clear-padding{
+  padding: 0;
+}
+
+@for $i from 1 through 24{
+  .col-#{$i}{
+    width: $i * 100%/24;
+    float: left;
+    padding-right: $main-spacing;
+    position: relative;
+  }
+}
+
+input[type='text'],input[type='number'],input[type='password']{
+  font-size: $fs-sm;
+  border: $main-border;
+  border-radius: $main-input-radius;
+}
+.after-input{
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  width: $form-height;
+  line-height: $form-height;
+  color: $fc-after-input;
+  margin-right: $main-spacing;
+  right: 0;
+  top: 0;
+}
+
+.form-control{
+  .form-title{
+    font-size: $fs-sm;
+    height: $form-height;
+    line-height: $form-height;
+  }
+  input{
+    width: 100%;
+    padding: 8px 12px;
+    line-height: $input-line-height;
+  }
+}
+
+.col-hex-1{
+  width: 1 * 100%/6;
+  float: left;
+}
+
+.clearfix{
+  clear: both;
+}
+.main-content{
+  border: $main-border;
+  border-top: none;
+}
+
+.navigator{
+  border-top: $main-border;
+  float: left;
+  width: 100%;
+  .square-angle:nth-last-of-type(2):after{
+    display: none;
+  }
+  .square-angle:nth-last-of-type(2):before{
+    display: none;
+  }
+}
+
+.content-item{
+  border-top: $main-border;
+  float: left;
+  width: 100%;
+  padding: $content-padding;
+  @at-root .content-title{
+    font-size: $fs-sm;
+    color: $main-color;
+    padding-bottom: 10px;
+  }
+  .content-tail{
+    float: left;
+    padding-top: 10px;
+  }
+}
+
+.square-angle{
+  height: $navigator-height;
+  position: relative;
+  text-align: center;
+  line-height: $navigator-height;
+  font-size: $fs-md;
+  &.active{
+    background-color: $main-color;
+    color: white;
+  }
+  &.active:after{
+    border-left: $angle-width solid $main-color;
+  }
+  &:after{
+    position: absolute;
+    content: '';
+    left:100%;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    border-top: $navigator-height/2 solid transparent;
+    border-left: $angle-width solid white;
+    border-bottom: $navigator-height/2 solid transparent;
+  }
+  &:before{
+    position: absolute;
+    content: '';
+    left: 100%;
+    top: -1px;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    border-top: $navigator-height/2+1 solid transparent;
+    border-left: $angle-width + 1 solid $main-border-color;
+    border-bottom: $navigator-height/2+1 solid transparent;
+  }
+}
+
+.border{
+  border: $main-border
+}
+
+.text-center{
+  text-align: center;
+}
+
+.table-like{
+  font-size: $fs-sm;
+  .table-like-head{
+    padding: $table-like-head-padding;
+    color: $fc2;
+    @extend .row
+  }
+
+  .table-like-row{
+    margin-bottom: 10px;
+    border: $main-border;
+    padding: $table-like-padding;
+    @extend .row
+  }
+}
+

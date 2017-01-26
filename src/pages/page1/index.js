@@ -4,14 +4,19 @@ window.onerror = function () {
     return true;
 };
 
-require('../../lib/style/scss/main.scss');
+let req = require.context('../../components/datepicker', true, /\.js/);
+console.log(req.keys());
+// req('index.js');
+
+
+// require('../../lib/style/scss/main.scss');
 // import * as avalon from 'avalon2';
 
 let avalon = window.avalon,
     html = require('./aa.html');
 // $ = require('jquery');
-
-require('./test.css');
+require('../../lib/style/scss/base/_.normalize.css')
+require('./xx.scss');
 
 $('#test').html(html);
 require('../../components/datepicker/index');
